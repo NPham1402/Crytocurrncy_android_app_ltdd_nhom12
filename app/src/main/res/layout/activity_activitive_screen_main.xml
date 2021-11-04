@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitive_screen_main">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vtl_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <eu.long1.spacetablayout.SpaceTabLayout
+        android:id="@+id/stl_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon_one="@drawable/ic_baseline_text_snippet_24"
+        app:icon_three="@drawable/ic_baseline_settings_applications_24"
+        app:icon_two="@drawable/ic_baseline_monetization_on_24"
+        app:layout_behavior="eu.long1.spacetablayout.SpaceTabLayoutBehavior"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:number_of_tabs="three"
+        app:starting_position="two"
+        app:tab_color="@color/black"
+        app:text_one="Tin Tức"
+        app:text_three="Cài đặt"
+        app:text_two="Tiền ảo" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

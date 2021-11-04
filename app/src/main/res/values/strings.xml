@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">CrytoCurrency_ltdt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="co_chu">
+        <item>Nhỏ</item>
+        <item>Bình thường</item>
+        <item>Lớn</item>
+    </string-array>
+    <string-array name="co_chu_values">
+        <item>Nhỏ</item>
+        <item>Bình thường</item>
+        <item>Lớn</item>
+    </string-array>
+    <string-array name="dark_mode">
+        <item>chế độ sáng</item>
+        <item>Chế độ tối</item>
+        <item>Theo hệ thống</item>
+    </string-array>
+    <string-array name="dark_mode_values">
+        <item>chế độ sáng</item>
+        <item>Chế độ tối</item>
+        <item>Theo hệ thống</item>
+    </string-array>
+    <string-array name="ngon_ngu">
+        <item>English</item>
+        <item>Tiếng Việt</item>
+    </string-array>
+    <string-array name="ngon_ngu_values">
+        <item>English</item>
+        <item>Tiếng Việt</item>
+    </string-array>
+</resources>
