@@ -1,10 +1,10 @@
 package com.example.crytocurrency_ltdt;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
-import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class activitive_screen_main extends AppCompatActivity {
         setContentView(R.layout.activity_activitive_screen_main);
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new fgment_news());
-        fragmentList.add(new fgment_cryto());
+        fragmentList.add(new fgment_cryto()                                                                                                                                                                      );
         fragmentList.add(new fgment_setting());
         ViewPager viewPager = (ViewPager) findViewById(R.id.vtl_main);
         tabLayout = (SpaceTabLayout) findViewById(R.id.stl_main);
@@ -27,6 +27,7 @@ public class activitive_screen_main extends AppCompatActivity {
                 fragmentList, savedInstanceState);
         viewPager.setPageTransformer(true,new DepthPageTransformer());
         viewPager.setOnTouchListener(new traslate_hiden_scoller_view(getBaseContext(),tabLayout));
+
 
     }
     @Override

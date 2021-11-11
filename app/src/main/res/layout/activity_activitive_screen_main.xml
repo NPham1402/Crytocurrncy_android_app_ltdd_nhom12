@@ -23,8 +23,8 @@
         app:number_of_tabs="three"
         app:starting_position="two"
         app:tab_color="@color/black"
-        app:text_one="Tin Tức"
-        app:text_three="Cài đặt"
-        app:text_two="Tiền ảo" />
+        app:text_one="@string/news_tab_layout"
+        app:text_three="@string/setting_tab_layout"
+        app:text_two="@string/cryto_tab_layout" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

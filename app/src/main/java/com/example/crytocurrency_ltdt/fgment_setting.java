@@ -2,18 +2,11 @@ package com.example.crytocurrency_ltdt;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceFragmentCompat;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-public class fgment_setting extends Fragment {
-
+public class fgment_setting extends PreferenceFragmentCompat {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fgment_setting, container, false);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.setting, rootKey);
     }
 }

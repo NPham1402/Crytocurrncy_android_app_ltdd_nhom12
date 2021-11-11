@@ -1,46 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <PreferenceCategory
-        android:icon="@drawable/ic_baseline_circle_notifications_24"
+        android:icon="@drawable/ic_baseline_text_snippet_24"
         android:textColor="#00796B"
-        android:title="Text"
+        android:title="@string/st_text_category"
         tools:ignore="TextContrastCheck">
         <ListPreference
             android:defaultValue="Bình thường"
             android:entries="@array/co_chu"
             app:useSimpleSummaryProvider="true"
             android:entryValues="@array/co_chu_values"
-            android:key="co_chu"
-            android:title="Cỡ chữ" />
+            android:key="textsize"
+            android:title="@string/st_textsize" />
         <ListPreference
-            android:defaultValue="Tiếng Việt"
+            android:key="Language"
+            android:defaultValue="VN"
             android:entries="@array/ngon_ngu"
+            app:useSimpleSummaryProvider="true"
             android:entryValues="@array/ngon_ngu_values"
-            android:title="Ngôn ngữ" />
+            android:title="@string/st_language" />
     </PreferenceCategory>
     <PreferenceCategory
         android:icon="@drawable/ic_baseline_circle_notifications_24"
         android:textColor="#00796B"
-        android:title="Thông báo"
+        android:title="@string/st_notification_category"
         tools:ignore="TextContrastCheck">
         <SwitchPreference
             android:key="turn_on_notification"
             android:summary="Bật thông báo"
             android:summaryOff="Tắt thông báo"
-            android:title="Bật" />
+            android:title="@string/st_notification_turnon" />
         <ListPreference
-            android:defaultValue=""
+            android:defaultValue="15"
+            android:entries="@array/time_notice"
+            android:entryValues="@array/time_notice_values"
+            app:useSimpleSummaryProvider="true"
             android:key="time_notification"
-            android:title="Thời gian gửi thông " />
+            android:title="@string/st_notification_time" />
 
     </PreferenceCategory>
+    <PreferenceCategory
+        android:icon="@drawable/ic_baseline_miscellaneous_services_24"
+        android:title="@string/st_options_categore">
     <ListPreference
         android:key="dark_mode"
-        android:title="Chế độ tối"
-        android:defaultValue="Theo hệ thống"
+        android:title="@string/st_options_darkmode"
+        app:useSimpleSummaryProvider="true"
+        android:defaultValue="Theo Hệ Thống"
         android:entries="@array/dark_mode"
         android:entryValues="@array/dark_mode_values"/>
+        <ListPreference
+            android:title="@string/st_options_time_update_price"
+            android:entries="@array/time_notice"
+            android:key="time_update_price"
+            android:entryValues="@array/time_notice_values"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="5"/>
 
+    </PreferenceCategory>
 </PreferenceScreen>

@@ -9,6 +9,16 @@ public class News {
     private String url;
     private  String Code_cryto;
     private String title_cryto;
+    private  String descrition;
+
+    public String getDescrition() {
+        return descrition;
+    }
+
+    public void setDescrition(String descrition) {
+        this.descrition = descrition;
+    }
+
     public int getCount() {
         return count;
     }
@@ -76,5 +86,18 @@ public class News {
         this.title_post = title_post;
         this.published_at = published_at;
         this.domain=domain;
+    }
+    public News(String title_post, String published_at, String domain,String code) {
+        this.title_post = title_post;
+        this.published_at = published_at;
+        this.domain=domain;
+        this.Code_cryto=code;
+    }
+    public News(String title_post, String published_at,String domain, String Url,String descrition) {
+        this.title_post = title_post;
+        this.published_at = published_at;
+        this.domain=domain;
+        this.url=Url;
+        this.descrition=descrition;
     }
 }

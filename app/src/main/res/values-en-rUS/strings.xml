@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrytoCurrency_ltdt</string>
+    <string name="news_tab_layout">News</string>
+    <string name="cryto_tab_layout">Crytocurrency</string>
+    <string name="setting_tab_layout">Settings</string>
+    <string name="st_text_category">Text</string>
+    <string name="st_textsize">Text size</string>
+    <string name="st_language">Language</string>
+    <string name="main_activity_loading">Loading</string>
+    <string name="st_options_categore">Option</string>
+    <string name="st_notification_category">Notice</string>
+    <string name="st_notification_time">" Notification delivery time (in minutes)"</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="st_options_time_update_price">" Price Update Time (Minutes)"</string>
+    <string name="st_options_darkmode">Dark Mode</string>
+    <string name="st_notification_turnon">" Enable/Disable Notifications"</string>
+    <string name="dark_mode_values_light">lIGHT mODE</string>
+    <string name="my_coin_like">My favorite Coin</string>
+    <string name="All_coin">All Crycurrency</string>
+</resources>

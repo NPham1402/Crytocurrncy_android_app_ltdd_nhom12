@@ -1,33 +1,76 @@
 <resources>
-    <string name="app_name">CrytoCurrency_ltdt</string>
+    <string name="app_name">TNTGroup</string>
+    <string name="app_name_title" translatable="false">TNT Group</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="co_chu">
-        <item>Nhỏ</item>
-        <item>Bình thường</item>
-        <item>Lớn</item>
+        <item><string name="co_chu_small">Nhỏ</string> </item>
+        <item><string name="co_chu_normal">Bình thường</string></item>
+        <item><string name="co_chu_big">lớn</string></item>
     </string-array>
+    <string-array name="SBENDGSD">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
     <string-array name="co_chu_values">
-        <item>Nhỏ</item>
-        <item>Bình thường</item>
-        <item>Lớn</item>
+        <item><string name="co_chu_values_small">Nhỏ</string> </item>
+        <item><string name="co_chu_values_normal">Bình thường</string></item>
+        <item><string name="co_chu_values_big">lớn</string></item>
     </string-array>
     <string-array name="dark_mode">
-        <item>chế độ sáng</item>
-        <item>Chế độ tối</item>
-        <item>Theo hệ thống</item>
+        <item><string name="dark_mode_light">chế độ sáng</string></item>
+        <item><strkhácing name="dark_mode_dark">chế độ tối</strkhácing></item>
+        <item><string name="dark_mode_system">Theo Hệ Thống</string></item>
     </string-array>
     <string-array name="dark_mode_values">
-        <item>chế độ sáng</item>
-        <item>Chế độ tối</item>
-        <item>Theo hệ thống</item>
+        <item>@string/dark_mod_valuese_dark</item>
+        <item>@string/dark_mod_valuese_dark</item>
+        <item>@string/dark_mode_values_system</item>
     </string-array>
+    <string name="channel_name" translatable="false">news_channel</string>
     <string-array name="ngon_ngu">
         <item>English</item>
         <item>Tiếng Việt</item>
     </string-array>
     <string-array name="ngon_ngu_values">
-        <item>English</item>
-        <item>Tiếng Việt</item>
+        <item>EN</item>
+        <item>VN</item>
     </string-array>
+    <string-array name="time_notice">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+    <string name="dark_mode_values_light">chế độ sáng</string>
+    <string name="dark_mod_valuese_dark" translatable="false">chế độ tối</string>
+    <string name="dark_mode_values_system" translatable="false">Theo Hệ Thống</string>
+    <string name="news_tab_layout">Tin Tức</string>
+    <string name="cryto_tab_layout">Tiền Ảo</string>
+    <string name="setting_tab_layout">Cài Đặt</string>
+    <string name="st_text_category">Chữ</string>
+    <string name="st_textsize">Cỡ chữ</string>
+    <string name="st_language">Ngôn Ngữ</string>
+    <string name="st_notification_category">Thông báo</string>
+    <string name="st_notification_turnon">Bật/Tắt thông báo</string>
+    <string name="st_notification_time">Thời gian gửi thông báo (Phút) </string>
+    <string name="st_options_categore">Tùy chọn </string>
+    <string name="my_coin_like">Coin bạn thích</string>
+    <string name="All_coin">Tất cảcoin</string>
+    <string name="st_options_darkmode">Chế độ tối</string>
+    <string name="st_options_time_update_price">Thời gian cập nhật giá (Phút)</string>
+    <string-array name="time_notice_values">
+        <item><string name="time_notice_values">5</string></item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+    <string name="main_activity_loading">Đang tải</string>
 </resources>

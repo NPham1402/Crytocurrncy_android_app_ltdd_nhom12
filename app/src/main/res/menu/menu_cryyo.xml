@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/total_holdings"
+        android:icon="@drawable/icon_awesome_coins"
+        android:title="@string/app_name_title"
+        android:iconTint="@color/icon_tint"
+        app:iconTint="@color/icon_tint"
+        app:showAsAction="always"/>
+</menu>

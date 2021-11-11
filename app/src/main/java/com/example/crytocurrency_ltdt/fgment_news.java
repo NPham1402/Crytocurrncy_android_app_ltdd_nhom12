@@ -1,19 +1,19 @@
 package com.example.crytocurrency_ltdt;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,16 +26,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 
-public class fgment_news extends Fragment {
+public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
     private ArrayList<News> newsArrayList;
     private News_adapter news_adapter;
     private View tabLayout;
-
+    SwipeRefreshLayout swipe;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +49,8 @@ public class fgment_news extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=view.findViewById(R.id.rcv_news);
         newsArrayList=new ArrayList<>();
+        swipe =view.findViewById(R.id.sf_refresh_layout2);
+        swipe.setOnRefreshListener(this);
         LinearLayoutManager llm =new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
@@ -57,10 +58,11 @@ public class fgment_news extends Fragment {
         news_adapter=new News_adapter(newsArrayList,getContext());
         recyclerView.setAdapter(news_adapter);
         tabLayout=view.findViewById(R.id.stl_main);
+
     }
 
     public void getnews(){
-        String url="https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2";
+        String url="https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2";
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -68,23 +70,33 @@ public class fgment_news extends Fragment {
                 try {
                      JSONArray data=response.getJSONArray("results");
                      for (int i=0;i<data.length();i++){
+                         String sysmbol="";
                          JSONObject dataobject=data.getJSONObject(i);
                          String domain=dataobject.getString("domain");
                          String title=dataobject.getString("title");
                          Log.e("lay",domain);
                          String date=dataobject.getString("published_at");
+                         String url=dataobject.getString("url");
                          Log.e("theo doi"," "+title+" "+date+" "+i);
-//             //            JSONArray currencies=dataobject.getJSONArray("currencies");
-//                         String sysmbol="";
+//                         JSONArray currencies=dataobject.getJSONArray("currencies");
+//                         if (currencies==null) {
+//                             sysmbol="";
 //
-//                         for (int j=0;j<currencies.length();j++){
-//                             JSONObject dataobject2=currencies.getJSONObject(j);
-//
-//                             sysmbol=dataobject2.getString("code");
+//                             continue;
 //
 //                         }
+//                         else {}
+//                         {
+//
+//                             for (int j=0;j<currencies.length();j++){
+//                                 JSONObject dataobject2=currencies.getJSONObject(j);
+//
+//                                 sysmbol=dataobject2.getString("code");
+//                                 newsArrayList.add(new News(title,date,domain,sysmbol));
+//                             }
+//                         }
 
-                         newsArrayList.add(new News(title,date,domain));
+                         newsArrayList.add(new News(title,date,domain,url,"Crypto Panic"));
                      }
                      news_adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
@@ -100,5 +112,22 @@ public class fgment_news extends Fragment {
             }
         });
         requestQueue.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onRefresh() {
+        Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
+        newsArrayList.clear();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                news_adapter.clear();
+                getnews();
+                news_adapter.add(newsArrayList);
+                news_adapter.notifyDataSetChanged();
+                swipe.setRefreshing(false);
+
+            }
+        }, 2000);
     }
 }
