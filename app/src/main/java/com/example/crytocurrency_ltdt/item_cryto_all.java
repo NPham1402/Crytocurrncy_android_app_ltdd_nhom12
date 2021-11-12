@@ -35,6 +35,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
     RecyclerView recyclerView;
     ArrayList<Cryto> crytoArrayList;
     Cryto_adapter adapter;
+    Util util;
     SwipeRefreshLayout swipe;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +49,8 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         super.onViewCreated(view, savedInstanceState);
         recyclerView =view.findViewById(R.id.crypto_all);
         crytoArrayList =new ArrayList<>();
+        util=new Util(getContext());
+        crytoArrayList=util.getcrypto();
         swipe =view.findViewById(R.id.sf_refresh_layout1);
         swipe.setOnRefreshListener(this);
         LinearLayoutManager llm =new LinearLayoutManager(getContext());
@@ -59,30 +62,9 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         recyclerView.setAdapter(adapter);
 
     }
-    @Override
-    public void onRefresh() {
-        Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
-        crytoArrayList.clear();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                adapter.clear();
-                getcrypto();
-                adapter.add(crytoArrayList);
-                adapter.notifyDataSetChanged();
-                swipe.setRefreshing(false);
-
-            }
-        }, 2000);
-    }
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     public void getcrypto(){
-        String url=" https://api.coinranking.com/v2/coins?timePeriod=3h";
+        String url=" https://api.coinranking.com/v2/coins?timePeriod=24h";
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         JsonObjectRequest jsonObjectReques= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -92,6 +74,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                     JSONArray data=object.getJSONArray("coins");
                     for (int i=0; i<data.length(); i++) {
                         JSONObject dataobject =data.getJSONObject(i);
+                        String uuid = dataobject.getString("uuid");
                         String ticker = dataobject.getString("symbol");
                         String name=dataobject.getString("name");
                         String color=dataobject.getString("color");
@@ -101,10 +84,10 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                         double lastPrice=Double.parseDouble(data_sparkline.get(0).toString()) ;
                         double newPrice=Double.parseDouble(data_sparkline.get(data_sparkline.length()-1).toString());
                         Log.e("tICVKER",lastPrice+"-"+ newPrice);
-                        crytoArrayList.add(new Cryto(ticker,name,color,price,rank,lastPrice,newPrice));
+                        crytoArrayList.add(new Cryto(uuid,ticker,name,color,price,rank,lastPrice,newPrice));
 
                     }
-                adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
@@ -118,10 +101,33 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-               Map<String, String> headers = new HashMap<String, String>();
-               headers.put("x-access-token","coinranking4dca18b4fc6f95ee35cd4f07e36fb500f0c6aa66e1972d1f");
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("x-access-token","coinranking4dca18b4fc6f95ee35cd4f07e36fb500f0c6aa66e1972d1f");
                 return  headers;
             }
         };       requestQueue.add(jsonObjectReques);
     }
+    @Override
+    public void onRefresh() {
+        Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
+        crytoArrayList.clear();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                adapter.clear();
+               getcrypto();
+                adapter.add(crytoArrayList);
+                adapter.notifyDataSetChanged();
+                swipe.setRefreshing(false);
+
+            }
+        }, 2000);
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+
 }

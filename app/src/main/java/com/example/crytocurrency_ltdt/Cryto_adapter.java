@@ -1,6 +1,7 @@
 package com.example.crytocurrency_ltdt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,14 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
         Log.e("test",(a)+"");
         Log.e("test",(b)+"");
         Log.e("test",(a-b)+"");
+        holder.stockContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(context,detail.class);
+                intent.putExtra("uuid",cryto.getUuid());
+                context.startActivity(intent);
+            }
+        });
     if ((a-b)<0)
     {
         holder.changePercent.setTextColor(context.getColor(R.color.error_red));

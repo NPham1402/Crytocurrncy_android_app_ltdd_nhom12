@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
+    Util util;
     private ArrayList<News> newsArrayList;
     private News_adapter news_adapter;
     private View tabLayout;
@@ -51,54 +52,36 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
         newsArrayList=new ArrayList<>();
         swipe =view.findViewById(R.id.sf_refresh_layout2);
         swipe.setOnRefreshListener(this);
+        util=new Util(getContext());
         LinearLayoutManager llm =new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
-        getnews();
+        getnews_api();
         news_adapter=new News_adapter(newsArrayList,getContext());
         recyclerView.setAdapter(news_adapter);
         tabLayout=view.findViewById(R.id.stl_main);
 
     }
-
-    public void getnews(){
+    public    void getnews_api(){
         String url="https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2";
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                     JSONArray data=response.getJSONArray("results");
-                     for (int i=0;i<data.length();i++){
-                         String sysmbol="";
-                         JSONObject dataobject=data.getJSONObject(i);
-                         String domain=dataobject.getString("domain");
-                         String title=dataobject.getString("title");
-                         Log.e("lay",domain);
-                         String date=dataobject.getString("published_at");
-                         String url=dataobject.getString("url");
-                         Log.e("theo doi"," "+title+" "+date+" "+i);
-//                         JSONArray currencies=dataobject.getJSONArray("currencies");
-//                         if (currencies==null) {
-//                             sysmbol="";
-//
-//                             continue;
-//
-//                         }
-//                         else {}
-//                         {
-//
-//                             for (int j=0;j<currencies.length();j++){
-//                                 JSONObject dataobject2=currencies.getJSONObject(j);
-//
-//                                 sysmbol=dataobject2.getString("code");
-//                                 newsArrayList.add(new News(title,date,domain,sysmbol));
-//                             }
-//                         }
-
-                         newsArrayList.add(new News(title,date,domain,url,"Crypto Panic"));
-                     }
-                     news_adapter.notifyDataSetChanged();
+                    JSONArray data=response.getJSONArray("results");
+                    for (int i=0;i<data.length();i++){
+                        String sysmbol="";
+                        JSONObject dataobject=data.getJSONObject(i);
+                        String domain=dataobject.getString("domain");
+                        String title=dataobject.getString("title");
+                        Log.e("lay",domain);
+                        String date=dataobject.getString("published_at");
+                        String url=dataobject.getString("url");
+                        Log.e("theo doi"," "+title+" "+date+" "+i);
+                        newsArrayList.add(new News(title,date,domain,url,"Crypto Panic"));
+                    }
+                    news_adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getContext(), ""+e.toString(), Toast.LENGTH_SHORT).show();
@@ -122,9 +105,8 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
             @Override
             public void run() {
                 news_adapter.clear();
-                getnews();
+                  getnews_api();
                 news_adapter.add(newsArrayList);
-                news_adapter.notifyDataSetChanged();
                 swipe.setRefreshing(false);
 
             }

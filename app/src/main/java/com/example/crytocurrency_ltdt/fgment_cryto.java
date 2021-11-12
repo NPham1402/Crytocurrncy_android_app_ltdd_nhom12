@@ -1,9 +1,11 @@
 package com.example.crytocurrency_ltdt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +20,8 @@ public class fgment_cryto extends Fragment {
     Tablayoutadater tabLayout;
     ViewPager2 views;
     View view_item;
-    @Override
+    Toolbar tb;
+  @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -33,6 +36,7 @@ public class fgment_cryto extends Fragment {
         tabLayout= new Tablayoutadater(getChildFragmentManager(),getLifecycle());
         tabLayout.addFragment(new Item_cryto_like());
         tabLayout.addFragment(new item_cryto_all());
+        views.setPageTransformer(new ZoomOutPageTransformer());
         views.setAdapter(tabLayout);
         new TabLayoutMediator(tabs, views,
                 (tab, position) -> {
@@ -46,6 +50,13 @@ public class fgment_cryto extends Fragment {
                 }
         ).attach();
         view_item=view.findViewById(R.id.total_holdings);
+        view_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),search.class);
+                startActivity(intent);
+            }
+        });
 //        tabs.addTab(tabs.newTab().setText("All"));
 //        tabs.addTab(tabs.newTab().setText("Like"));
 
