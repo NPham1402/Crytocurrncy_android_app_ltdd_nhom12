@@ -15,7 +15,13 @@
     <string name="st_options_time_update_price">" Price Update Time (Minutes)"</string>
     <string name="st_options_darkmode">Dark Mode</string>
     <string name="st_notification_turnon">" Enable/Disable Notifications"</string>
-    <string name="dark_mode_values_light">lIGHT mODE</string>
+    <string name="dark_mode_values_light">"Day mode "</string>
     <string name="my_coin_like">My favorite Coin</string>
     <string name="All_coin">All Crycurrency</string>
+    <string name="channel_name">News Channel</string>
+    <string name="dark_mod_valuese_dark">Night mode</string>
+    <string name="dark_mode_values_system">Default</string>
+    <string name="co_chu_small">Small</string>
+    <string name="co_chu_normal">Normal</string>
+    <string name="co_chu_big">Large</string>
 </resources>
