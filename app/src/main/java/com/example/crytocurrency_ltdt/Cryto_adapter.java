@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder> {
@@ -37,7 +39,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     Cryto cryto=crytos.get(position);
     holder.ticker.setText(cryto.getSymbol());
     holder.namem.setText(cryto.getName());
-    holder.totalValue.setText(""+cryto.getPrice());
+    holder.totalValue.setText( ( ""+cryto.getPrice() ) );
     holder.ranking.setText(cryto.getRank());
     //holder.stockContainer.setBackgroundColor(Color.parseColor(cryto.getColor()));
         double a=cryto.getLastPrice();
@@ -53,14 +55,26 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
                 context.startActivity(intent);
             }
         });
-    if ((a-b)<0)
-    {
-        holder.changePercent.setTextColor(context.getColor(R.color.error_red));
-    }
-    else {
-        holder.changePercent.setTextColor(context.getColor(R.color.positive_green));
-    }
-        holder.changePercent.setText((a-b)+"");
+        DecimalFormat df = new DecimalFormat("0.00");
+        df.setRoundingMode(RoundingMode.UP);
+        //double kq = (double) Math.round(((a-b) * 10000)) / 10000;
+        double kq2 = b - a ;
+        double tron =  (double) Math.round(  ( ( (b-a)/a )*100 ) * 100) / 100   ;
+        if ((a-b)>0)
+        {
+            holder.changePercent2.setTextColor(context.getColor(R.color.error_red));
+            holder.changePercent.setTextColor(context.getColor(R.color.error_red));
+            //holder.changePercent.setText( ( tron  + "%" ) );
+
+        }
+        else {
+            holder.changePercent2.setTextColor(context.getColor(R.color.positive_green));
+            holder.changePercent.setTextColor(context.getColor(R.color.positive_green));
+            //holder.changePercent.setText((  tron + "%"));
+        }
+
+        holder.changePercent2.setText( ( df.format(kq2) +"" ));
+        holder.changePercent.setText( ( tron  + "%" ) );
     }
     public void clear(){
         crytos.clear();
@@ -72,7 +86,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView ticker,namem,totalValue ,changePercent,ranking;
+        private TextView ticker,namem,totalValue ,changePercent, changePercent2,ranking;
         private LinearLayout stockContainer;
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -80,6 +94,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
             namem=view.findViewById(R.id.name);
             totalValue=view.findViewById(R.id.totalValue);
             changePercent=view.findViewById(R.id.changePercent);
+            changePercent2=view.findViewById(R.id.changePercent2);
             ranking=view.findViewById(R.id.ranking);
             stockContainer=view.findViewById(R.id.stockContainer);
         }
