@@ -9,6 +9,7 @@
         android:title="@string/st_text_category"
         tools:ignore="TextContrastCheck">
         <ListPreference
+            android:icon="@drawable/ic_baseline_text_fields_24"
             android:defaultValue="Bình thường"
             android:entries="@array/co_chu"
             app:useSimpleSummaryProvider="true"
@@ -16,6 +17,7 @@
             android:key="textsize"
             android:title="@string/st_textsize" />
         <ListPreference
+            android:icon="@drawable/ic_baseline_language_24"
             android:key="Language"
             android:defaultValue="VN"
             android:entries="@array/ngon_ngu"
@@ -29,11 +31,13 @@
         android:title="@string/st_notification_category"
         tools:ignore="TextContrastCheck">
         <SwitchPreference
+            android:icon="@drawable/ic_baseline_notifications_off_24"
             android:key="turn_on_notification"
             android:summary="Bật thông báo"
             android:summaryOff="Tắt thông báo"
             android:title="@string/st_notification_turnon" />
         <ListPreference
+            android:icon="@drawable/ic_baseline_notifications_paused_24"
             android:defaultValue="15"
             android:entries="@array/time_notice"
             android:entryValues="@array/time_notice_values"
@@ -46,6 +50,7 @@
         android:icon="@drawable/ic_baseline_miscellaneous_services_24"
         android:title="@string/st_options_categore">
     <ListPreference
+        android:icon="@drawable/ic_dark_light"
         android:key="dark_mode"
         android:title="@string/st_options_darkmode"
         app:useSimpleSummaryProvider="true"
@@ -53,6 +58,7 @@
         android:entries="@array/dark_mode"
         android:entryValues="@array/dark_mode_values"/>
         <ListPreference
+            android:icon="@drawable/ic_baseline_timer_24"
             android:title="@string/st_options_time_update_price"
             android:entries="@array/time_notice"
             android:key="time_update_price"
