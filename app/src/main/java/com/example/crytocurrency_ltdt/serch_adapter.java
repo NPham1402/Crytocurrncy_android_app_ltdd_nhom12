@@ -37,7 +37,7 @@ public class serch_adapter extends RecyclerView.Adapter<serch_adapter.ViewHolder
     holder.imageView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(context,"ADD",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,R.string.ADD,Toast.LENGTH_SHORT).show();
         }
     });
     }

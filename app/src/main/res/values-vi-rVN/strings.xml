@@ -24,4 +24,9 @@
     <string name="co_chu_small">Bé</string>
     <string name="co_chu_normal">Vừa</string>
     <string name="co_chu_big">To</string>
+    <string name="cannot_retrieve_data">Không lấy được dữ liệu</string>
+    <string name="Refresh">Tải lại trang</string>
+    <string name="Vietnamese">chạy Tiếng Việt</string>
+    <string name="English">chạy Anh Ngữ</string>
+    <string name="ADD">đã thêm</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.crytocurrency_ltdt;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -47,6 +50,11 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+        String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code);
+
         recyclerView =view.findViewById(R.id.crypto_all);
         crytoArrayList =new ArrayList<>();
         util=new Util(getContext());
@@ -109,7 +117,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
     }
     @Override
     public void onRefresh() {
-        Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), R.string.Refresh, Toast.LENGTH_SHORT).show();
         crytoArrayList.clear();
         new Handler().postDelayed(new Runnable() {
             @Override

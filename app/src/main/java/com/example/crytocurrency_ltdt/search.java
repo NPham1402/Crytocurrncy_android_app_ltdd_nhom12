@@ -1,12 +1,14 @@
 package com.example.crytocurrency_ltdt;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 
@@ -15,8 +17,25 @@ public class search extends AppCompatActivity {
     serch_adapter Adapter;
     ArrayList<String> tickers;
     Util util;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
+        Context context = Util.changeLang(newBase, lang_code);
+        super.attachBaseContext(context);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if(Localehelper.getLanguage(search.this).equalsIgnoreCase("EN"))
+        {
+            Localehelper.setLocale(search.this,"en");
+        }else if(Localehelper.getLanguage(search.this).equalsIgnoreCase("VN")) {
+            Localehelper.setLocale(search.this, "vi");
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         search=findViewById(R.id.searchView);

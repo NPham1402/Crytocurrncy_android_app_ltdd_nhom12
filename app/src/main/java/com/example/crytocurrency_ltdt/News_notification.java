@@ -61,7 +61,7 @@ public class News_notification extends BroadcastReceiver {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context , "Không lấy được dữ liệu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context , R.string.cannot_retrieve_data, Toast.LENGTH_SHORT).show();
 
             }
         });

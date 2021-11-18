@@ -24,4 +24,9 @@
     <string name="co_chu_small">Small</string>
     <string name="co_chu_normal">Normal</string>
     <string name="co_chu_big">Large</string>
+    <string name="cannot_retrieve_data">cannot retrieve data</string>
+    <string name="Refresh">Refreshing</string>
+    <string name="Vietnamese">Vietnamese</string>
+    <string name="English">English</string>
+    <string name="ADD">ADD</string>
 </resources>

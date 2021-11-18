@@ -2,6 +2,12 @@
     <string name="app_name">TNTGroup</string>
     <string name="app_name_title" translatable="false">TNT Group</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="cannot_retrieve_data">Không lấy được dữ liệu</string>
+    <string name="Refresh">Tải lại trang</string>
+    <string name="Vietnamese">chạy Tiếng Việt</string>
+    <string name="English">chạy Anh Ngữ</string>
+    <!-- search adapter  -->
+    <string name="ADD">đã thêm</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="co_chu_small">Nhỏ</string>
     <string name="co_chu_normal">Bình thường</string>
@@ -39,8 +45,10 @@
         <item>Tiếng Việt</item>
     </string-array>
     <string-array name="ngon_ngu_values">
-        <item>EN</item>
-        <item>VN</item>
+        <!--<item>EN</item>
+        <item>VN</item>-->
+        <item>en</item>
+        <item>vi</item>
     </string-array>
     <string-array name="time_notice">
         <item>5</item>
