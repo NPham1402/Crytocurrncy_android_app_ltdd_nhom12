@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrytoCurrency_ltdt</string>
+    <string name="news_tab_layout">Tin Tức</string>
+    <string name="cryto_tab_layout">Tiền Ảo</string>
+    <string name="setting_tab_layout">Cài Đặt</string>
+    <string name="st_text_category">Chữ</string>
+    <string name="st_textsize">Cỡ chữ</string>
+    <string name="st_language">Ngôn Ngữ</string>
+    <string name="st_notification_category">Thông báo</string>
+    <string name="st_notification_turnon">Bật/Tắt thông báo</string>
+    <string name="st_notification_time">"Thời gian gửi thông báo (Phút) "</string>
+    <string name="st_options_categore">"Tùy chọn "</string>
+    <string name="st_options_darkmode">Chế độ tối</string>
+    <string name="st_options_time_update_price">Thời gian cập nhật giá (Phút)</string>
+    <string name="main_activity_loading">Đang tải</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dark_mode_values_light">chế độ sáng</string>
+    <string name="my_coin_like">Coin bạn thích</string>
+    <string name="All_coin">Tất cả coin</string>
+    <string name="channel_name" translatable="false">Kênh tin tức</string>
+    <string name="dark_mod_valuese_dark">chế độ tối</string>
+    <string name="dark_mode_values_system">Mặc định</string>
+    <string name="co_chu_small">Bé</string>
+    <string name="co_chu_normal">Vừa</string>
+    <string name="co_chu_big">To</string>
+    <string name="cannot_retrieve_data">Không lấy được dữ liệu</string>
+    <string name="Refresh">Tải lại trang</string>
+    <string name="Vietnamese">chạy Tiếng Việt</string>
+    <string name="English">chạy Anh Ngữ</string>
+    <string name="ADD">đã thêm</string>
+</resources>

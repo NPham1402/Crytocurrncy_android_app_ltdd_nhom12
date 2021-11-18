@@ -33,7 +33,6 @@ public class fgment_setting extends PreferenceFragmentCompat {
 
 
 
-
 //SharedPreferences shP = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
@@ -43,6 +42,10 @@ public class fgment_setting extends PreferenceFragmentCompat {
 
 
         setPreferencesFromResource(R.xml.setting, rootKey);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+        String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code);
 
         Ncontext = this.getContext();
 
@@ -58,7 +61,9 @@ public class fgment_setting extends PreferenceFragmentCompat {
             if (language.contains("en")) {
                 Toast.makeText(getContext(), R.string.English, Toast.LENGTH_SHORT).show();
 //                activitive_screen_main.setlocale(Ncontext, "en");
+                getActivity().recreate();
             }
+            getActivity().recreate();
             return true;
                     //activitive_screen_main.setlocal(language);
                 });
