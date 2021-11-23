@@ -29,4 +29,9 @@
     <string name="Vietnamese">chạy Tiếng Việt</string>
     <string name="English">chạy Anh Ngữ</string>
     <string name="ADD">đã thêm</string>
+    <string name="dark_mode_light">chế độ sáng</string>
+    <string name="dark_mode_dark">chế độ tối</string>
+    <string name="dark_mode_system">Mặc định</string>
+    <string name="dark_mode_time">Theo thời gian</string>
+    <string name="dark_mode_pin">Tiết kiệm pin</string>
 </resources>

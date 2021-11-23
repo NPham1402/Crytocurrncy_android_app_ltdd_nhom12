@@ -22,7 +22,9 @@ public class search extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(newBase);
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
-        Context context = Util.changeLang(newBase, lang_code);
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Context context = Util.changeLang(newBase, lang_code ,f);
+        //super.attachBaseContext(Util.adjustFontSize(newBase ,f));
         super.attachBaseContext(context);
     }
 
@@ -37,6 +39,9 @@ public class search extends AppCompatActivity {
         }
 
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Util.adjustFontSize(this ,f);
         setContentView(R.layout.activity_search);
         search=findViewById(R.id.searchView);
         util =new Util(this);

@@ -15,20 +15,23 @@
         android:configChanges="locale|orientation">
         <activity
             android:name=".detail"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="uiMode"/>
         <activity
             android:name=".search"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="uiMode"/>
         <activity
             android:name=".activitive_screen_main"
             android:exported="true"
-            android:configChanges="locale|orientation"/>
+            android:configChanges="locale|orientation|uiMode"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:configChanges="locale|orientation">
+            android:configChanges="locale|orientation|uiMode">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

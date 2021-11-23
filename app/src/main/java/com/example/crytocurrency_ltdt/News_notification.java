@@ -1,12 +1,24 @@
 package com.example.crytocurrency_ltdt;
 
+
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import static java.security.AccessController.getContext;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,9 +31,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.AccessControlContext;
 import java.util.ArrayList;
 
 public class News_notification extends BroadcastReceiver {
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -41,6 +55,7 @@ public class News_notification extends BroadcastReceiver {
                         Log.e("lay",domain);
                         String date=dataobject.getString("published_at");
                         Log.e("theo doi"," "+title+" "+date+" "+i);
+
 //             //            JSONArray currencies=dataobject.getJSONArray("currencies");
 //                         String sysmbol="";
 //
@@ -65,10 +80,23 @@ public class News_notification extends BroadcastReceiver {
 
             }
         });
+        AccessControlContext text=getContext();
         requestQueue.add(jsonObjectRequest);
        title= newsArrayList.get(0).getTitle_post();
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(context,"news_cryto").setSmallIcon(R.drawable.ic_baseline_circle_notifications_24);
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(context,"news_cryto").setSmallIcon(R.drawable.ic_baseline_circle_notifications_24).setContentText("Hehehe boyyyy").setContentTitle(title).setAutoCancel(true).setColorized(true).setColor(0xff123456).setStyle(new NotificationCompat.BigTextStyle()
+                .bigText("Much longer text that cannot fit one line..."));
+        /*NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE );
+        notificationManager.notify(0, builder.build());*/
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("message",title);
+
+        NotificationManagerCompat notif = NotificationManagerCompat.from(context);
+
+// notificationId is a unique int for each notification that you must define
+        notif.notify(1, builder.build());
     }
 
-    }
+
+}
 

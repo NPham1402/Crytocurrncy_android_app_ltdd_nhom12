@@ -34,14 +34,21 @@ public class activitive_screen_main extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(newBase);
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
-        Context context = Util.changeLang(newBase, lang_code);
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+
+        Context context = Util.changeLang(newBase, lang_code,f);
+        //Util.adjustFontSize(newBase, f);
         super.attachBaseContext(context);
     }
+
 
     SpaceTabLayout tabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+         Util.adjustFontSize(this,f);
         setContentView(R.layout.activity_activitive_screen_main);
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new fgment_news());

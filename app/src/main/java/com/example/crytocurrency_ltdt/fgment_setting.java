@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -30,12 +31,20 @@ public class fgment_setting extends PreferenceFragmentCompat {
     public static final String My_share_Pref = "setting";
     Context Ncontext;
     public String language;
+    public String textsize;
+    public String dark_mode;
 
 
 
 //SharedPreferences shP = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
+    @Override
+    public void onAttach(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        super.onAttach(Util.adjustFontSize(context , f));
+    }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -45,7 +54,8 @@ public class fgment_setting extends PreferenceFragmentCompat {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
-        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code);
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code , f);
 
         Ncontext = this.getContext();
 
@@ -61,12 +71,62 @@ public class fgment_setting extends PreferenceFragmentCompat {
             if (language.contains("en")) {
                 Toast.makeText(getContext(), R.string.English, Toast.LENGTH_SHORT).show();
 //                activitive_screen_main.setlocale(Ncontext, "en");
-                getActivity().recreate();
             }
             getActivity().recreate();
             return true;
                     //activitive_screen_main.setlocal(language);
                 });
+
+        ListPreference Textsize = (ListPreference) findPreference("textsize");
+
+        Textsize.setOnPreferenceChangeListener((preference, newValue) -> {
+            textsize =  String.valueOf(newValue);
+            //activitive_screen_main.setlocal(language);
+            if (textsize.contains("0.5f")) {
+                Toast.makeText(getContext(), R.string.co_chu_small, Toast.LENGTH_SHORT).show();
+//                activitive_screen_main.setlocale(Ncontext, "vi");
+            }
+            else if (textsize.contains("1.0f")) {
+                Toast.makeText(getContext(), R.string.co_chu_normal, Toast.LENGTH_SHORT).show();
+//                activitive_screen_main.setlocale(Ncontext, "en");
+            }
+            else if (textsize.contains("1.8f")) {
+                Toast.makeText(getContext(), R.string.co_chu_big, Toast.LENGTH_SHORT).show();
+//                activitive_screen_main.setlocale(Ncontext, "en");
+            }
+            getActivity().recreate();
+            return true;
+        });
+
+
+        ListPreference Dark_mode = (ListPreference) findPreference("dark_mode");
+        Dark_mode.setOnPreferenceChangeListener((preference, newValue) -> {
+            dark_mode =  String.valueOf(newValue);
+            //activitive_screen_main.setlocal(language);
+            if (dark_mode.contains("MODE_NIGHT_NO")) {
+                Toast.makeText(getContext(), R.string.dark_mode_light, Toast.LENGTH_SHORT).show();
+                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+            else if (dark_mode.contains("MODE_NIGHT_YES")) {
+                Toast.makeText(getContext(), R.string.dark_mode_dark, Toast.LENGTH_SHORT).show();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+            else if (dark_mode.contains("MODE_NIGHT_FOLLOW_SYSTEM")) {
+                Toast.makeText(getContext(), R.string.dark_mode_system, Toast.LENGTH_SHORT).show();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+            }
+            else if (dark_mode.contains("MODE_NIGHT_AUTO_TIME")) {
+                Toast.makeText(getContext(), R.string.dark_mode_time, Toast.LENGTH_SHORT).show();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_TIME);
+            }
+            else if (dark_mode.contains("MODE_NIGHT_AUTO_BATTERY")) {
+                Toast.makeText(getContext(), R.string.dark_mode_pin, Toast.LENGTH_SHORT).show();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+            }
+            getActivity().recreate();
+            return true;
+        });
+
             /*if (language.contains("VN")) {
                 Toast.makeText(getContext(), R.string.Vietnamese, Toast.LENGTH_SHORT).show();
                 setlocal(getContext(), "vi");

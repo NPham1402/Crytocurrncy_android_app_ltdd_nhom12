@@ -30,7 +30,7 @@ public class Util {
     ArrayList<String> arrayticker;
     ArrayList<News> newsArrayList;
 
-    public static ContextWrapper changeLang(Context context, String lang_code){
+    public static ContextWrapper changeLang(Context context, String lang_code,float fontco){
         Locale sysLocale;
 
         Resources rs = context.getResources();
@@ -41,6 +41,8 @@ public class Util {
         } else {
             sysLocale = config.locale;
         }
+        if ( config.fontScale != fontco)
+            config.fontScale = fontco;
         if (!lang_code.equals("") && !sysLocale.getLanguage().equals(lang_code)) {
             Locale locale = new Locale(lang_code);
             Locale.setDefault(locale);
@@ -57,6 +59,23 @@ public class Util {
         }
 
         return new ContextWrapper(context);
+    }
+
+
+
+
+    public static Context adjustFontSize(Context context, float fontco){
+        Configuration configuration = context.getResources().getConfiguration();
+        // This will apply to all text like -> Your given text size * fontScale
+        if ( configuration.fontScale != fontco)
+        configuration.fontScale = fontco;//1.0f;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            context = context.createConfigurationContext(configuration);
+        } else {
+            context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+        }
+
+        return context; //context.createConfigurationContext(configuration);
     }
 
 //    private static OkHttpClient httpClient;

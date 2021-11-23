@@ -37,7 +37,8 @@ public class fgment_cryto extends Fragment {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
-        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code);
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code ,f);
 
         tabs=view.findViewById(R.id.tab_layout_cryto);
         views=view.findViewById(R.id.Vp_refresh_layout);

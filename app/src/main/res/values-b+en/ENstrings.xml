@@ -29,4 +29,9 @@
     <string name="Vietnamese">Vietnamese</string>
     <string name="English">English</string>
     <string name="ADD">ADD</string>
+    <string name="dark_mode_light">Day mode</string>
+    <string name="dark_mode_dark">Night mode</string>
+    <string name="dark_mode_system">System Default</string>
+    <string name="dark_mode_time">Day time</string>
+    <string name="dark_mode_pin">Battery saved</string>
 </resources>

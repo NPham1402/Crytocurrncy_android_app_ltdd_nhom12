@@ -58,7 +58,8 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
 
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
             String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
-        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code);
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code, f);
 
         recyclerView=view.findViewById(R.id.rcv_news);
         newsArrayList=new ArrayList<>();
