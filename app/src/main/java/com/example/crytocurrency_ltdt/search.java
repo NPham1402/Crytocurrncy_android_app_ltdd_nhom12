@@ -1,6 +1,7 @@
 package com.example.crytocurrency_ltdt;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import androidx.preference.PreferenceManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,10 +36,33 @@ public class search extends AppCompatActivity {
     serch_adapter Adapter;
     ArrayList<Util.searc> tickers;
     Util util;
+
     RecyclerView recyclerView;
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Context context = Util.changeLang(newBase, lang_code ,f);
+        //super.attachBaseContext(Util.adjustFontSize(newBase ,f));
+        super.attachBaseContext(context);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if(Localehelper.getLanguage(search.this).equalsIgnoreCase("EN"))
+        {
+            Localehelper.setLocale(search.this,"en");
+        }else if(Localehelper.getLanguage(search.this).equalsIgnoreCase("VN")) {
+            Localehelper.setLocale(search.this, "vi");
+        }
+
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Util.adjustFontSize(this ,f);
         setContentView(R.layout.activity_search);
         search=findViewById(R.id.searchView);
         util =new Util(this);

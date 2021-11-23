@@ -1,5 +1,7 @@
 package com.example.crytocurrency_ltdt;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -36,6 +39,9 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
     private News_adapter news_adapter;
     private View tabLayout;
     SwipeRefreshLayout swipe;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +54,13 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+            String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code, f);
+
         recyclerView=view.findViewById(R.id.rcv_news);
         newsArrayList=new ArrayList<>();
         swipe =view.findViewById(R.id.sf_refresh_layout2);
@@ -90,7 +103,7 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext() , "Không lấy được dữ liệu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext() , R.string.cannot_retrieve_data, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -140,7 +153,7 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
 
     @Override
     public void onRefresh() {
-        Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), R.string.Refresh, Toast.LENGTH_SHORT).show();
         newsArrayList.clear();
         new Handler().postDelayed(new Runnable() {
             @Override

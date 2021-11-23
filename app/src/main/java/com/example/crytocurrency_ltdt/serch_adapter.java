@@ -48,6 +48,7 @@ public class serch_adapter extends RecyclerView.Adapter<serch_adapter.ViewHolder
         @Override
         public void onClick(View v) {
 
+
         }
     });
     }

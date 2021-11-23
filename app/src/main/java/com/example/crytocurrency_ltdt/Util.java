@@ -1,6 +1,9 @@
 package com.example.crytocurrency_ltdt;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -22,6 +25,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 
 public class Util {
     Context context;
@@ -62,6 +70,57 @@ public class Util {
         }
         return  null;
     }
+
+
+    public static ContextWrapper changeLang(Context context, String lang_code,float fontco){
+        Locale sysLocale;
+
+        Resources rs = context.getResources();
+        Configuration config = rs.getConfiguration();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            sysLocale = config.getLocales().get(0);
+        } else {
+            sysLocale = config.locale;
+        }
+        if ( config.fontScale != fontco)
+            config.fontScale = fontco;
+        if (!lang_code.equals("") && !sysLocale.getLanguage().equals(lang_code)) {
+            Locale locale = new Locale(lang_code);
+            Locale.setDefault(locale);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                config.setLocale(locale);
+            } else {
+                config.locale = locale;
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                context = context.createConfigurationContext(config);
+            } else {
+                context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+            }
+        }
+
+        return new ContextWrapper(context);
+    }
+
+
+
+
+    public static Context adjustFontSize(Context context, float fontco){
+        Configuration configuration = context.getResources().getConfiguration();
+        // This will apply to all text like -> Your given text size * fontScale
+        if ( configuration.fontScale != fontco)
+        configuration.fontScale = fontco;//1.0f;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            context = context.createConfigurationContext(configuration);
+        } else {
+            context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
+        }
+
+        return context; //context.createConfigurationContext(configuration);
+    }
+
+
 //    private static OkHttpClient httpClient;
 //
 //    // this method is used to fetch svg and load it into target imageview.
@@ -142,7 +201,7 @@ public class Util {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context , "Không lấy được dữ liệu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context , R.string.cannot_retrieve_data, Toast.LENGTH_SHORT).show();
 
             }
         });

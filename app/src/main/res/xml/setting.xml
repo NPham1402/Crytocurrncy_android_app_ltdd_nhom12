@@ -9,21 +9,21 @@
         android:title="@string/st_text_category"
         tools:ignore="TextContrastCheck">
         <ListPreference
-            android:icon="@drawable/ic_baseline_text_fields_24"
-            android:defaultValue="Bình thường"
+            android:defaultValue="1.0f"
             android:entries="@array/co_chu"
-            app:useSimpleSummaryProvider="true"
             android:entryValues="@array/co_chu_values"
+            android:icon="@drawable/ic_baseline_text_fields_24"
             android:key="textsize"
-            android:title="@string/st_textsize" />
+            android:title="@string/st_textsize"
+            app:useSimpleSummaryProvider="true" />
         <ListPreference
+            android:defaultValue="vi"
+            android:entries="@array/ngon_ngu"
+            android:entryValues="@array/ngon_ngu_values"
             android:icon="@drawable/ic_baseline_language_24"
             android:key="Language"
-            android:defaultValue="VN"
-            android:entries="@array/ngon_ngu"
-            app:useSimpleSummaryProvider="true"
-            android:entryValues="@array/ngon_ngu_values"
-            android:title="@string/st_language" />
+            android:title="@string/st_language"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
     <PreferenceCategory
         android:icon="@drawable/ic_baseline_circle_notifications_24"
@@ -54,7 +54,7 @@
         android:key="dark_mode"
         android:title="@string/st_options_darkmode"
         app:useSimpleSummaryProvider="true"
-        android:defaultValue="Theo Hệ Thống"
+        android:defaultValue="MODE_NIGHT_FOLLOW_SYSTEM"
         android:entries="@array/dark_mode"
         android:entryValues="@array/dark_mode_values"/>
         <ListPreference

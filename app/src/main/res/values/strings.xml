@@ -2,45 +2,67 @@
     <string name="app_name">TNTGroup</string>
     <string name="app_name_title" translatable="false">TNT Group</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="cannot_retrieve_data">Không lấy được dữ liệu</string>
+    <string name="Refresh">Tải lại trang</string>
+    <string name="Vietnamese"> Tiếng Việt</string>
+    <string name="English"> Anh Ngữ</string>
+    <!-- search adapter  -->
+    <string name="ADD">đã thêm</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="co_chu_small">Nhỏ</string>
     <string name="co_chu_normal">Bình thường</string>
     <string name="co_chu_big">lớn</string>
     <string-array name="co_chu">
-        <item>@string/dark_mod_valuese_dark </item>
-        <item>@string/dark_mod_valuese_dark</item>
-        <item>@string/dark_mod_valuese_dark</item>
+        <item>@string/co_chu_small </item>
+        <item>@string/co_chu_normal</item>
+        <item>@string/co_chu_big</item>
     </string-array>
+
+    <string-array name="co_chu_values">
+        <item>0.5f</item>
+        <item>1.0f</item>
+        <item>1.8f</item>
+    </string-array>
+
+
     <string-array name="SBENDGSD">
         <item>@string/dark_mod_valuese_dark</item>
         <item>@string/dark_mod_valuese_dark</item>
         <item>@string/dark_mod_valuese_dark</item>
         <item>@string/dark_mod_valuese_dark</item>
     </string-array>
+    <string name="dark_mode_light">chế độ sáng</string>
+    <string name="dark_mode_dark">chế độ tối</string>
+    <string name="dark_mode_system">Theo Hệ Thống</string>
+    <string name="dark_mode_time">Theo thời gian</string>
+    <string name="dark_mode_pin">Tiết kiệm pin</string>
 
-    <string-array name="co_chu_values">
-        <item><string name="co_chu_values_small">Nhỏ</string> </item>
-        <item><string name="co_chu_values_normal">Bình thường</string></item>
-        <item><string name="co_chu_values_big">lớn</string></item>
-    </string-array>
+
     <string-array name="dark_mode">
-        <item><string name="dark_mode_light">chế độ sáng</string></item>
-        <item><strkhácing name="dark_mode_dark">chế độ tối</strkhácing></item>
-        <item><string name="dark_mode_system">Theo Hệ Thống</string></item>
+        <item>@string/dark_mode_light</item>
+        <item>@string/dark_mode_dark</item>
+        <item>@string/dark_mode_system</item>
+        <item>@string/dark_mode_time</item>
+        <item>@string/dark_mode_pin</item>
     </string-array>
     <string-array name="dark_mode_values">
-        <item>@string/dark_mod_valuese_dark</item>
-        <item>@string/dark_mod_valuese_dark</item>
-        <item>@string/dark_mode_values_system</item>
+        <item>MODE_NIGHT_NO</item>
+        <item>MODE_NIGHT_YES</item>
+        <item>MODE_NIGHT_FOLLOW_SYSTEM</item>
+        <item>MODE_NIGHT_AUTO_TIME</item>
+        <item>MODE_NIGHT_AUTO_BATTERY</item>
     </string-array>
     <string name="channel_name">news_channel</string>
+    <string name="channel_description" translatable="false">news_channel description</string>
     <string-array name="ngon_ngu">
-        <item>English</item>
-        <item>Tiếng Việt</item>
+        <item>@string/English</item>
+        <item>@string/Vietnamese</item>
     </string-array>
     <string-array name="ngon_ngu_values">
-        <item>EN</item>
-        <item>VN</item>
+        <!--<item>EN</item>
+        <item>VN</item>-->
+        <item>en</item>
+        <item>vi</item>
     </string-array>
     <string-array name="time_notice">
         <item>5</item>

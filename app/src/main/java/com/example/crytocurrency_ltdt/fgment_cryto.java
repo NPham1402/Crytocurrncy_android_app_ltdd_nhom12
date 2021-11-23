@@ -1,6 +1,8 @@
 package com.example.crytocurrency_ltdt;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -31,6 +34,12 @@ public class fgment_cryto extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+        String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
+        float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code ,f);
+
         tabs=view.findViewById(R.id.tab_layout_cryto);
         views=view.findViewById(R.id.Vp_refresh_layout);
         tabLayout= new Tablayoutadater(getChildFragmentManager(),getLifecycle());
