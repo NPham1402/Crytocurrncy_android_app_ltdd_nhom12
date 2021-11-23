@@ -3,16 +3,19 @@
     <string name="app_name_title" translatable="false">TNT Group</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="co_chu_small">Nhỏ</string>
+    <string name="co_chu_normal">Bình thường</string>
+    <string name="co_chu_big">lớn</string>
     <string-array name="co_chu">
-        <item><string name="co_chu_small">Nhỏ</string> </item>
-        <item><string name="co_chu_normal">Bình thường</string></item>
-        <item><string name="co_chu_big">lớn</string></item>
+        <item>@string/dark_mod_valuese_dark </item>
+        <item>@string/dark_mod_valuese_dark</item>
+        <item>@string/dark_mod_valuese_dark</item>
     </string-array>
     <string-array name="SBENDGSD">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>@string/dark_mod_valuese_dark</item>
+        <item>@string/dark_mod_valuese_dark</item>
+        <item>@string/dark_mod_valuese_dark</item>
+        <item>@string/dark_mod_valuese_dark</item>
     </string-array>
 
     <string-array name="co_chu_values">
@@ -30,7 +33,7 @@
         <item>@string/dark_mod_valuese_dark</item>
         <item>@string/dark_mode_values_system</item>
     </string-array>
-    <string name="channel_name" translatable="false">news_channel</string>
+    <string name="channel_name">news_channel</string>
     <string-array name="ngon_ngu">
         <item>English</item>
         <item>Tiếng Việt</item>
@@ -48,8 +51,8 @@
         <item>30</item>
     </string-array>
     <string name="dark_mode_values_light">chế độ sáng</string>
-    <string name="dark_mod_valuese_dark" translatable="false">chế độ tối</string>
-    <string name="dark_mode_values_system" translatable="false">Theo Hệ Thống</string>
+    <string name="dark_mod_valuese_dark">chế độ tối</string>
+    <string name="dark_mode_values_system">Theo Hệ Thống</string>
     <string name="news_tab_layout">Tin Tức</string>
     <string name="cryto_tab_layout">Tiền Ảo</string>
     <string name="setting_tab_layout">Cài Đặt</string>
