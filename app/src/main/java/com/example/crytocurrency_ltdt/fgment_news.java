@@ -95,6 +95,47 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
             }
         });
         requestQueue.add(jsonObjectRequest);
+//        String url2="https://news.google.com/rss/topics/CAAqJAgKIh5DQkFTRUFvS0wyMHZNSFp3YWpSZlloSUNaVzRvQUFQAQ?hl=en-US&gl=US&ceid=US%3Aen";
+//
+//        RequestQueue requestQueue2= Volley.newRequestQueue(getContext());
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url2, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try{
+//                    XmlPullParserFactory xml=XmlPullParserFactory.newInstance();
+//                    XmlPullParser paeser=xml.newPullParser();
+//                    paeser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES,false);
+//                    paeser.setFeature(response,false);
+//                    int event=paeser.getEventType();
+//                    while(event!=XmlPullParser.END_DOCUMENT){
+//                        String eltname=null;
+//                        switch (event){
+//                            case XmlPullParser.START_TAG:
+//                                eltname=paeser.getName();
+//                                if ("channel".equals(eltname)){
+//                                    News news=new News();
+//                                    newsArrayList.add(news);
+//                                }
+//                                else if("".equals(eltname))
+//
+//
+//                        }
+//                    }
+//                   news_adapter.notifyDataSetChanged();
+//                }
+//                catch (XmlPullParserException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }) ;
+//        requestQueue2.add(stringRequest);
     }
 
     @Override

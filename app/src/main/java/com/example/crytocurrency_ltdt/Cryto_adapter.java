@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder> {
     private ArrayList<Cryto> crytos;
     private Context context;
+    Util util;
     public void add(ArrayList<Cryto> crytos)
     {
     this.crytos=crytos;
@@ -24,6 +27,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     public Cryto_adapter(ArrayList<Cryto> crytos, Context context) {
         this.crytos = crytos;
         this.context = context;
+        util=new Util(context);
     }
 
     @Override
@@ -61,6 +65,13 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
         holder.changePercent.setTextColor(context.getColor(R.color.positive_green));
     }
         holder.changePercent.setText((a-b)+"");
+    holder.imageView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String mystring = context.getString(R.string.add)+": "+cryto.getName();
+            Toast.makeText(context, mystring,Toast.LENGTH_SHORT).show();
+        }
+    });
     }
     public void clear(){
         crytos.clear();
@@ -74,6 +85,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView ticker,namem,totalValue ,changePercent,ranking;
         private LinearLayout stockContainer;
+        private ImageView imageView;
         public ViewHolder(@NonNull View view) {
             super(view);
             ticker=view.findViewById(R.id.ticker);
@@ -82,6 +94,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
             changePercent=view.findViewById(R.id.changePercent);
             ranking=view.findViewById(R.id.ranking);
             stockContainer=view.findViewById(R.id.stockContainer);
+            imageView=view.findViewById(R.id.more_menu);
         }
     }
 }

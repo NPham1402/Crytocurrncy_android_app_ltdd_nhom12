@@ -11,6 +11,10 @@ public class News {
     private String title_cryto;
     private  String descrition;
 
+    public News() {
+
+    }
+
     public String getDescrition() {
         return descrition;
     }

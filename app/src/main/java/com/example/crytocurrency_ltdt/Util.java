@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,15 +15,53 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Util {
     Context context;
     ArrayList<Cryto> crytoArrayList;
-    ArrayList<String> arrayticker;
+    ArrayList<searc> arrayticker;
+    String myfile= "favorite";
     ArrayList<News> newsArrayList;
+    public void writetofile(String coinfarvorite){
+        try{
+            File file=new File(context.getFilesDir(),myfile);
+            FileOutputStream fileOutputStream=new FileOutputStream(file);
+            fileOutputStream.write(coinfarvorite.getBytes());
+            fileOutputStream.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public  ArrayList<String> loadfromfile(){
+        ArrayList<String>arrayList=new ArrayList<>();
+        File file=new File(context.getFilesDir(),myfile);
+        try {
+            FileInputStream fileInputStream=new FileInputStream(file);
+            ObjectInputStream objectInputStream=new ObjectInputStream(fileInputStream);
+            arrayList=(ArrayList<String>) objectInputStream.readObject();
+            return arrayList;
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+        return  null;
+    }
 //    private static OkHttpClient httpClient;
 //
 //    // this method is used to fetch svg and load it into target imageview.
@@ -58,18 +95,15 @@ public class Util {
     public int countcryto(){
         return crytoArrayList.size();
     }
-    public  ArrayList<String> getticker(){
+    public  ArrayList<searc> getticker(){
+   
     return  arrayticker;
     }
     public Util(Context context) {
         this.context = context;
-        arrayticker=new ArrayList<String>();
-        crytoArrayList=new ArrayList<Cryto>( );
-        newsArrayList=new ArrayList<News>();
     }
     public ArrayList<Cryto> getcrypto(){
         crytoArrayList.clear();
-        getcrypto_api();
         return crytoArrayList;
     }
     public ArrayList<News> getnews(){
@@ -78,50 +112,8 @@ public class Util {
         Toast.makeText(context,""+newsArrayList.size(), Toast.LENGTH_SHORT).show();
         return newsArrayList;
     }
-    public void  getcrypto_api(){
-        String url=" https://api.coinranking.com/v2/coins?timePeriod=3h";
-        RequestQueue requestQueue= Volley.newRequestQueue(context);
-        JsonObjectRequest jsonObjectReques= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONObject object=response.getJSONObject("data");
-                    JSONArray data=object.getJSONArray("coins");
-                    for (int i=0; i<data.length(); i++) {
-                        JSONObject dataobject =data.getJSONObject(i);
-                        String ticker = dataobject.getString("symbol");
-                        String name=dataobject.getString("name");
-                        String color=dataobject.getString("color");
-                        Double price=dataobject.getDouble("price");
-                        String rank=dataobject.getString("rank");
-                        JSONArray data_sparkline=dataobject.getJSONArray("sparkline");
-                        double lastPrice=Double.parseDouble(data_sparkline.get(0).toString()) ;
-                        double newPrice=Double.parseDouble(data_sparkline.get(data_sparkline.length()-1).toString());
-                        Log.e("tICVKER",ticker+"-"+ newPrice);
-                      //  crytoArrayList.add(new Cryto(ticker,name,color,price,rank,lastPrice,newPrice));
-                        arrayticker.add(ticker);
-                    }
 
-                } catch (JSONException e) {
-                    Toast.makeText(context,e.toString(),Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,error.toString()+" ",Toast.LENGTH_SHORT).show();
 
-            }
-        }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-access-token","coinranking4dca18b4fc6f95ee35cd4f07e36fb500f0c6aa66e1972d1f");
-                return  headers;
-            }
-        };       requestQueue.add(jsonObjectReques);
-       Log.d("asbsh",crytoArrayList.size()+"");
-    }
     public    ArrayList<News> getnews_api(News_adapter news_adapter){
         String url="https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2";
         RequestQueue requestQueue= Volley.newRequestQueue(context);
@@ -157,6 +149,30 @@ public class Util {
         requestQueue.add(jsonObjectRequest);
         return newsArrayList;
     }
+public static class searc{
+    public String getUuid() {
+        return uuid;
+    }
 
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    String uuid;
+        String name;
+
+    public searc(String uuid, String name) {
+        this.uuid = uuid;
+        this.name = name;
+    }
+}
 
 }

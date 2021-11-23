@@ -49,8 +49,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         super.onViewCreated(view, savedInstanceState);
         recyclerView =view.findViewById(R.id.crypto_all);
         crytoArrayList =new ArrayList<>();
-        util=new Util(getContext());
-        crytoArrayList=util.getcrypto();
+        getcrypto();
         swipe =view.findViewById(R.id.sf_refresh_layout1);
         swipe.setOnRefreshListener(this);
         LinearLayoutManager llm =new LinearLayoutManager(getContext());

@@ -18,4 +18,5 @@
     <string name="dark_mode_values_light">lIGHT mODE</string>
     <string name="my_coin_like">My favorite Coin</string>
     <string name="All_coin">All Crycurrency</string>
+    <string name="add">Add My favorite</string>
 </resources>

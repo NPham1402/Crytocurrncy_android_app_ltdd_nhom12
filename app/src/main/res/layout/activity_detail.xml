@@ -54,7 +54,7 @@
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
 
-            <WebView
+            <ImageView
                 android:id="@+id/icon"
                 android:paddingBottom="6dp"
                 android:layout_width="match_parent"

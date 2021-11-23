@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/total_holdings"
-        android:icon="@drawable/icon_awesome_coins"
+        android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/app_name_title"
         android:iconTint="@color/icon_tint"
         app:iconTint="@color/icon_tint"

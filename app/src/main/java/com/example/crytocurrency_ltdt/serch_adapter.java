@@ -1,12 +1,13 @@
 package com.example.crytocurrency_ltdt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class serch_adapter extends RecyclerView.Adapter<serch_adapter.ViewHolder> {
-    private ArrayList<String> crytos;
+    private ArrayList<Util.searc> crytos;
     private Context context;
-    public serch_adapter(ArrayList<String> crytos, Context context) {
+    public serch_adapter(ArrayList<Util.searc> crytos, Context context) {
         this.crytos = crytos;
         this.context = context;
     }
-    public void addlist(ArrayList<String> crytos){
+    public void addlist(ArrayList<Util.searc> crytos){
         this.crytos=crytos;
     }
     @NonNull
@@ -32,12 +33,21 @@ public class serch_adapter extends RecyclerView.Adapter<serch_adapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull serch_adapter.ViewHolder holder, int position) {
-    String a=crytos.get(position);
-    holder.textView.setText(a);
+        Util.searc searc = crytos.get(position);
+    holder.textView.setText(searc.name);
+    holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent= new Intent(context,detail.class);
+            intent.putExtra("uuid",searc.uuid);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }
+    });
     holder.imageView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(context,"ADD",Toast.LENGTH_SHORT).show();
+
         }
     });
     }
@@ -53,10 +63,12 @@ public class serch_adapter extends RecyclerView.Adapter<serch_adapter.ViewHolder
     public class ViewHolder extends  RecyclerView.ViewHolder{
         TextView textView;
         ImageView imageView;
+        LinearLayout linearLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView=itemView.findViewById(R.id.tv_search_item);
             imageView =itemView.findViewById(R.id.imv_add);
+            linearLayout = itemView.findViewById(R.id.search);
         }
     }
 }

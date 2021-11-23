@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ import java.util.Map;
 public class detail extends AppCompatActivity implements OnChartValueSelectedListener  {
     TextView sysmbol,name,rank,price;
     WebView description;
-    WebView icon;
+    ImageView icon;
     String uuid;
     String name_item,description_iteml,url2,price_item,ranking,sysmbol_item;
     ArrayList<pricehitory> sparkline;
@@ -55,7 +56,8 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
         onBackPressed();
         return super.onSupportNavigateUp();
     }
-
+    private void readsvg(String url){
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,18 +126,6 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
         getcrypto(uuid, new VolleyCallBack() {
             @Override
             public void onSuccess() {
-                icon.loadDataWithBaseURL(null, "<!DOCTYPE html>\n" +
-                        "<html lang=\"en\">\n" +
-                        "<head>\n" +
-                        "    <meta charset=\"UTF-8\">\n" +
-                        "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
-                        "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-                        "    <title>Document</title>\n" +
-                        "</head>\n" +
-                        "<body>\n" +
-                        "    <img src=\""+url2+"\">\n" +
-                        "</body>\n" +
-                        "</html>", "html/css", "utf-8", null);
                 sysmbol.setText(sysmbol_item);
                 getSupportActionBar().setTitle(""+sysmbol_item);
                 name.setText(name_item);
@@ -244,7 +234,6 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                     JSONObject dataobject=object.getJSONObject("coin");
 
                         sysmbol_item=dataobject.getString("symbol");
-
                          name_item=dataobject.getString("name");
                         description_iteml=dataobject.getString("description");
                      url2= dataobject.getString("iconUrl");
