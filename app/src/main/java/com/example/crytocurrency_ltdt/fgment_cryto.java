@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,7 @@ public class fgment_cryto extends Fragment {
     ViewPager2 views;
     View view_item;
     Toolbar tb;
+    Spinner spinerSort;
   @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,6 +37,11 @@ public class fgment_cryto extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        spinerSort = (Spinner)view.findViewById(R.id.spinner3);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.sort,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinerSort.setAdapter(adapter);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref

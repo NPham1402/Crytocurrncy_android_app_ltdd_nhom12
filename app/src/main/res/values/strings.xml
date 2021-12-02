@@ -12,6 +12,18 @@
     <string name="co_chu_small">Nhỏ</string>
     <string name="co_chu_normal">Bình thường</string>
     <string name="co_chu_big">lớn</string>
+
+    <string name="sort_as">sắp xếp theo</string>
+    <string name="sort_name">Theo Tên</string>
+    <string name="sort_price">Theo giá</string>
+    <string name="sort_percent">theo % tăng trưởng</string>
+
+    <string-array name="sort">
+        <item>@string/sort_name </item>
+        <item>@string/sort_price</item>
+        <item>@string/sort_percent</item>
+    </string-array>
+
     <string-array name="co_chu">
         <item>@string/co_chu_small </item>
         <item>@string/co_chu_normal</item>

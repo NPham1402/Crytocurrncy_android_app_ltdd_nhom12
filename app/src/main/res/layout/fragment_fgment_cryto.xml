@@ -11,7 +11,9 @@
             android:id="@+id/Vp_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </androidx.viewpager2.widget.ViewPager2>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -53,7 +55,16 @@
             app:layout_anchorGravity="center"
             app:layout_collapseMode="none">
 
-         \
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:prompt="@string/sort_as"/>
+                <!--style="@style/spinner_style"-->
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout_cryto"
                 android:layout_width="match_parent"

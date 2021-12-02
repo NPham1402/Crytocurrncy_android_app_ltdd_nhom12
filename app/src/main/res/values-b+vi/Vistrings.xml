@@ -34,4 +34,8 @@
     <string name="dark_mode_system">Mặc định</string>
     <string name="dark_mode_time">Theo thời gian</string>
     <string name="dark_mode_pin">Tiết kiệm pin</string>
+    <string name="sort_name">Theo tên</string>
+    <string name="sort_price">Theo giá</string>
+    <string name="sort_percent">theo % tăng trưởng</string>
+    <string name="sort_as">sắp xếp theo: ...</string>
 </resources>

@@ -35,4 +35,9 @@
     <string name="dark_mode_system">System Default</string>
     <string name="dark_mode_time">Day time</string>
     <string name="dark_mode_pin">Battery saved</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_price">price</string>
+    <string name="sort_percent">growth rate</string>
+    <string name="app_name_title" translatable="false">.</string>
+    <string name="sort_as">Sort_as: ...</string>
 </resources>
