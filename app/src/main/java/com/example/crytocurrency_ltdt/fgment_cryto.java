@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.ArrayList;
 
 public class fgment_cryto extends Fragment {
     TabLayout tabs;
@@ -38,10 +41,36 @@ public class fgment_cryto extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        /*spinerSort = (Spinner)view.findViewById(R.id.spinner3);
+        ArrayList<SpinnerItem> items = new ArrayList<SpinnerItem>();
+        items.add(new SpinnerItem(MyApplication.getRes().getString(R.string.sort_name), false));
+        items.add(new SpinnerItem(MyApplication.getRes().getString(R.string.sort_price), false));
+        items.add(new SpinnerItem(MyApplication.getRes().getString(R.string.sort_percent), false));
+        items.add(new SpinnerItem(MyApplication.getRes().getString(R.string.sort_as), true)); // Last item
+
+        MySpinnerAdapter adapter = new MySpinnerAdapter(getActivity().getBaseContext(), android.R.layout.simple_spinner_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinerSort.setAdapter(adapter);
+        spinerSort.setSelection(items.size() - 1);*/
+
+
         spinerSort = (Spinner)view.findViewById(R.id.spinner3);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.sort,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinerSort.setAdapter(adapter);
+        /*spinerSort.setSelection(adapter.getCount() - 1);
+        spinerSort.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    adapter.remove(adapter.getItem(adapter.getCount() - 1));
+                }
+                return false;
+            }
+        });*/
+
+
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref

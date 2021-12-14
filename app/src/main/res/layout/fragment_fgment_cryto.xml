@@ -56,15 +56,6 @@
             app:layout_collapseMode="none">
 
 
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:prompt="@string/sort_as"/>
-                <!--style="@style/spinner_style"-->
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout_cryto"
                 android:layout_width="match_parent"
@@ -77,6 +68,17 @@
                 app:tabSelectedTextColor="@color/tab_text_selected"
                 app:tabTextColor="@color/tab_text"
                 tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:prompt="@string/sort_as" />
+
+            <!--style="@style/spinner_style"-->
+
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
