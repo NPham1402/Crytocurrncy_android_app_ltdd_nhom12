@@ -11,7 +11,9 @@
             android:id="@+id/Vp_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:background="@color/xam"
+            />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -23,7 +25,7 @@
             android:id="@+id/com"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/home_toolbar_scrim"
+            app:contentScrim="@color/xanhdam"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleEnabled="false">
 
@@ -32,7 +34,7 @@
                 android:layout_height="236dp"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/nopath___copy__2_" />
+                android:src="@drawable/ic_cryptonew" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/tb_home"
@@ -40,7 +42,8 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:menu="@menu/menu_cryyo"
-                app:title="@string/app_name" />
+                app:title="@string/app_name"
+                app:titleTextColor="@color/vang"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <LinearLayout
@@ -53,18 +56,17 @@
             app:layout_anchorGravity="center"
             app:layout_collapseMode="none">
 
-         \
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout_cryto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabBackground="@color/tab_background"
+                app:tabBackground="@color/xanhdam"
                 app:tabGravity="fill"
-                app:tabIndicatorColor="@color/color_accent"
+                app:tabIndicatorColor="@color/vang"
                 app:tabIndicatorHeight="2dp"
                 app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/tab_text_selected"
-                app:tabTextColor="@color/tab_text"
+                app:tabSelectedTextColor="@color/vang"
+                app:tabTextColor="@color/xam"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>

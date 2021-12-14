@@ -10,6 +10,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,8 +25,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,7 +117,7 @@ public class search extends AppCompatActivity {
         void onSuccess();
     }
     public void   getcrypto_api(final VolleyCallBack callBack){
-        String url=" https://api.coinranking.com/v2/coins?timePeriod=3h";
+        String url=" https://api.coinranking.com/v2/coins?limit=100";
         RequestQueue requestQueue= Volley.newRequestQueue(this);
                 JsonObjectRequest jsonObjectReques= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

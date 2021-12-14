@@ -23,9 +23,10 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:number_of_tabs="three"
         app:starting_position="two"
-        app:tab_color="@color/black"
+        app:tab_color="@color/xanhdam"
         app:text_one="@string/news_tab_layout"
         app:text_three="@string/setting_tab_layout"
-        app:text_two="@string/cryto_tab_layout" />
+        app:text_two="@string/cryto_tab_layout"
+        app:text_color="@color/vang"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

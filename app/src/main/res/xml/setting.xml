@@ -2,9 +2,10 @@
 <PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     >
     <PreferenceCategory
-        android:icon="@drawable/ic_baseline_text_snippet_24"
+        android:icon="@drawable/ic_baseline_text_format_24"
         android:textColor="#00796B"
         android:title="@string/st_text_category"
         tools:ignore="TextContrastCheck">

@@ -37,7 +37,18 @@
     <string name="dark_mode_time">Theo thời gian</string>
     <string name="dark_mode_pin">Tiết kiệm pin</string>
 
+    <string name="sortaz" translatable="false">A-Z</string>
+    <string name="sortza" translatable="false">Z-A</string>
+    <string name="sortpricetang" >Giá tăng dần </string>
+    <string name="sortpricegiam" >Giá giảm dần</string>
 
+
+    <string-array name="sort">
+        <item>@string/sortaz</item>
+        <item>@string/sortza</item>
+        <item>@string/sortpricetang</item>
+        <item>@string/sortpricegiam</item>
+    </string-array>
     <string-array name="dark_mode">
         <item>@string/dark_mode_light</item>
         <item>@string/dark_mode_dark</item>
