@@ -12,7 +12,6 @@
         style="@style/SpinKitView.Large.DoubleBounce"
         android:layout_width="199dp"
         android:layout_height="191dp"
-        app:SpinKit_Color="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

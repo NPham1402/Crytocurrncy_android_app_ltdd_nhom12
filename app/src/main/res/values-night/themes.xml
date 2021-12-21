@@ -1,16 +1,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CrytoCurrency_ltdt" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+    <!--<style name="Theme.CrytoCurrency_ltdt" parent="Theme.MaterialComponents.DayNight">
+        &lt;!&ndash; Primary brand color. &ndash;&gt;
         <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryDark">@color/purple_200</item>
+        <item name="colorAccent">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
+        <item name="colorOnPrimary">@color/purple_700</item>
+        <item name="android:colorPrimaryDark">@color/purple_700</item>
+        <item name="android:colorBackground">@color/mau_nen</item>
+        <item name="android:windowBackground">@color/purple_700</item>
+        <item name="android:colorForeground">@color/purple_700</item>
+        <item name="android:color">@color/purple_700</item>
+        <item name="android:colorControlNormal">@color/abc_primary_text_material_dark</item>
+
+
+        <item name="selectableItemBackground">@color/purple_200</item>
+        <item name="tooltipFrameBackground">@color/purple_200</item>
+        <item name="listChoiceBackgroundIndicator">@color/purple_200</item>
+        <item name="colorSwitchThumbNormal">#B8860B</item>
+
+
+        <item name="actionModeSplitBackground">?attr/colorPrimaryDark</item>
+        &lt;!&ndash; Secondary brand color. &ndash;&gt;
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+        <item name="colorOnSecondary">@color/Wheat</item>
+
+        &lt;!&ndash; Status bar color. &ndash;&gt;
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
+        <item name="android:textColorPrimary">@color/Pink</item>
+        <item name="android:textColorSecondary">@color/Pink</item>
+
+        <item name="isLightTheme">false</item>
+    </style>-->
 </resources>

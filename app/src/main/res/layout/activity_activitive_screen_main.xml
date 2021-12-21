@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitive_screen_main">
+    tools:context=".activitive_screen_main"
+    android:background="?android:attr/colorBackground"
+    android:backgroundTint="?android:attr/colorBackground">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vtl_main"
@@ -24,7 +26,7 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:number_of_tabs="three"
         app:starting_position="two"
-        app:tab_color="@color/black"
+        app:tab_color="@color/primary_material_dark"
         app:text_one="@string/news_tab_layout"
         app:text_three="@string/setting_tab_layout"
         app:text_two="@string/cryto_tab_layout" />

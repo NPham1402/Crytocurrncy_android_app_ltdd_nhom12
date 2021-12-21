@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--<color name="mau_nen">#e55b5b</color>-->
+   <!-- <color name="primary_material_dark">#05668d</color>
+    <color name="primary_dark_material_dark">#EE82EE</color>
+    <color name="background_material_dark">#05668d</color>
+    <color name="foreground_material_dark">#EE82EE</color>
+    <color name="foreground_material_light">#EE82EE</color>
+    <color name="colorPrimary">#EE82EE</color>
+
+    <color name="abc_primary_text_material_light">#EE82EE</color>
+
+    <color name="background_floating_material_dark">#e55b5b</color>
+    <color name="abc_primary_text_material_dark">#009900</color>
+
+    <color name="accent_material_dark">#FFFF00</color>
+    <color name="abc_background_cache_hint_selector_material_dark">#B8860B</color>
+    <color name="bright_foreground_disabled_material_dark">#0000FF</color>
+    <color name="ripple_material_dark">#d19391</color>
+    <color name="tooltip_background_dark">#D5FFD9</color>
+    <color name="colorPrimaryDark">#FFBB86FC</color>
+    <color name="abc_hint_foreground_material_dark">#FFBB86FC</color>
+    <color name="primary_dark_material_light">#be6663</color>
+    <color name="dim_foreground_material_dark">#006b00</color>
+    <color name="bright_foreground_material_light">#006b00</color>
+
+
+    <color name="design_dark_default_color_background">#05668d</color>
+    <color name="design_dark_default_color_on_background">#FF018786</color>
+    <color name="design_dark_default_color_on_primary">#DAA520</color>
+    <color name="design_dark_default_color_on_secondary">#FF00FF</color>
+    <color name="design_dark_default_color_on_surface">#FFFFFF</color>
+    <color name="design_dark_default_color_primary">#BA86FC</color>
+    <color name="design_dark_default_color_primary_dark">#ff5655</color>
+    <color name="design_dark_default_color_primary_variant">#3700B3</color>
+    <color name="design_dark_default_color_secondary">#03DAC6</color>
+    <color name="design_dark_default_color_secondary_variant">#03DAC6</color>
+    <color name="design_dark_default_color_surface">#FFFACD</color>
+-->
+
+
+
+
     <color name="sea">#05668d</color>
     <color name="spicy_salmon">#ff5655</color>
     <color name="color_accent">#be6663</color>
