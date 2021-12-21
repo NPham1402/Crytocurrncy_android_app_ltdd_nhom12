@@ -38,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -90,10 +91,10 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
             public void onSuccess() {
                 YAxis rightAxis = mChart.getAxisRight();
                 rightAxis.setDrawGridLines(false);
-                rightAxis.setAxisMinimum(0f);
+                rightAxis.setAxisMinimum(0.1f);
                 YAxis leftAxis = mChart.getAxisLeft();
-                leftAxis.setDrawGridLines(false);
-                leftAxis.setAxisMinimum(0f);
+                leftAxis.setDrawGridLines(true);
+                leftAxis.setAxisMinimum(0.1f);
                 List <String> timestamp =new ArrayList<>();
                 Float [] price = new Float[sparkline.size()];
                 for (int i = 0; i < sparkline.size(); i++){
@@ -101,7 +102,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                     timestamp.add(sparkline.get(i).getTimestamp()+"");
                 }
                 XAxis xAxis = mChart.getXAxis();
-                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE);
+                xAxis.setPosition(XAxis.XAxisPosition.BOTH_SIDED);
                 xAxis.setValueFormatter(new ValueFormatter() {
                     @Override
                     public String getAxisLabel(float value, AxisBase axis) {
@@ -127,12 +128,13 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
             @Override
             public void onSuccess() {
                 sysmbol.setText(sysmbol_item);
+                DecimalFormat df = new DecimalFormat("0.00");
                 getSupportActionBar().setTitle(""+sysmbol_item);
                 name.setText(name_item);
                 String encodedHtml = Base64.encodeToString(description_iteml.getBytes(),
                         Base64.NO_PADDING);
                 description.loadData(encodedHtml,"text/html","base64");
-                price.setText(price_item);
+                price.setText(df.format(Double.parseDouble(price_item)));
                 rank.setText(ranking);
             }
         });
@@ -148,17 +150,17 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
             entries.add(new Entry(index, data[index]));
         }
 
-        LineDataSet set = new LineDataSet(entries, uuid);
-        set.setColor(Color.GREEN);
-        set.setLineWidth(2.5f);
-        set.setCircleColor(Color.GREEN);
-        set.setCircleRadius(5f);
-        set.setFillColor(Color.GREEN);
-        set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+
+        LineDataSet set = new LineDataSet(entries, "Line DataSet");
+        set.setColor(Color.BLUE);
+        set.setLineWidth(3.5f);
+        set.setCircleColor(Color.rgb(240, 238, 70));
+        set.setCircleSize(5f);
+        // set.setFillColor(Color.rgb(240, 238, 70));
         set.setDrawValues(true);
         set.setValueTextSize(10f);
-        set.setValueTextColor(Color.GREEN);
-
+        set.setValueTextColor(Color.rgb(240, 238, 70));
+        set.setHighLightColor(Color.MAGENTA);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         d.addDataSet(set);
 
@@ -194,6 +196,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                     for (int i=0; i<dataobject.length(); i++){
                         JSONObject price_history=dataobject.getJSONObject(i);
                         float price =Float.parseFloat(price_history.getString("price"));
+
                         Integer timrstamp= Integer.parseInt(price_history.getString("timestamp"));
                         sparkline.add(new pricehitory(price,timrstamp));
 

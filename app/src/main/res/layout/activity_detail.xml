@@ -5,14 +5,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".detail">
+    tools:context=".detail"
+    android:background="@color/xam">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/xanhdam"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
+        app:titleTextColor="@color/vang"/>
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -27,7 +29,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TimeL"/>
+                android:text="TimeL"
+                android:textColor="@color/vang"/>
                 <SeekBar
                 android:id="@+id/sb_chart"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
@@ -56,12 +59,6 @@
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
 
-            <ImageView
-                android:id="@+id/icon"
-                android:paddingBottom="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-            />
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"/>
@@ -71,6 +68,14 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:srcCompat="@drawable/btc"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="4dp"/>
+
                 <TextView
                     android:id="@+id/detail_symbol"
                     android:layout_width="wrap_content"
@@ -79,17 +84,20 @@
                     android:paddingBottom="6dp"
                     android:maxLines="1"
                     android:layout_marginRight="4dp"
-                    android:layout_marginEnd="4dp"/>
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/vang"/>
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="/"
+                    android:textColor="@color/vang"
                     android:paddingBottom="6dp"
                     android:textSize="24sp"
                     android:layout_marginRight="4dp"
-                    android:layout_marginEnd="4dp"/>
+                    android:layout_marginEnd="4dp"
+                    />
 
                 <TextView
                     android:id="@+id/detail_name"
@@ -100,7 +108,9 @@
                     android:maxLines="1"
                     android:layout_marginRight="4dp"
                     android:layout_marginEnd="4dp"
-                    android:layout_gravity="bottom"/>
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/vang"
+                    />
 
                 <TextView
                     android:id="@+id/detail_rank"
@@ -111,7 +121,8 @@
                     android:maxLines="2"
                     android:paddingRight="6dp"
                     android:paddingBottom="6dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textColor="@color/vang"/>
             </LinearLayout>
 
 
@@ -123,7 +134,9 @@
                 android:paddingBottom="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"/>
+                android:ellipsize="end"
+                android:textSize="18dp"
+                android:textColor="@color/white"/>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"/>
@@ -131,7 +144,10 @@
                 android:id="@+id/detail_description"
                 android:paddingBottom="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@color/xanhdam"
+
+                />
         </LinearLayout>
 
     </ScrollView>

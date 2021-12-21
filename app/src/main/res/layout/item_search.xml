@@ -42,5 +42,5 @@
         android:paddingBottom="10dp"
         android:layout_gravity="center"
         tools:src="@drawable/ic_baseline_add_circle_24"
-        app:tint="@color/icon_tint" />
+        app:tint="@color/black" />
 </LinearLayout>

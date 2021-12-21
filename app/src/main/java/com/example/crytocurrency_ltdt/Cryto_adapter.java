@@ -77,8 +77,14 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
             //holder.changePercent.setText((  tron + "%"));
         }
 
-        holder.changePercent2.setText( ( df.format(kq2) +"" ));
+        holder.changePercent2.setText( ( df.format(b) +"" ));
         holder.changePercent.setText( ( tron  + "%" ) );
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,cryto.getSymbol(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     public void clear(){
         crytos.clear();

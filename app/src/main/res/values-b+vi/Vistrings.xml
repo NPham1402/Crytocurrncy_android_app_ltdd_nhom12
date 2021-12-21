@@ -38,4 +38,6 @@
     <string name="sort_price">Theo giá</string>
     <string name="sort_percent">theo % tăng trưởng</string>
     <string name="sort_as">sắp xếp theo: ...</string>
+    <string name="sortpricetang">Giá tăng dần</string>
+    <string name="sortpricegiam">" Giá giảm dần"</string>
 </resources>

@@ -147,7 +147,7 @@
     <color name="Gainsboro">#DCDCDC</color>
     <color name="Crimson">#DC143C</color>
     <color name="PaleVioletRed">#DB7093</color>
-    <color name="Goldenrod">#DAA520</color>
+    <color name="yellowgold">#DAA520</color>
     <color name="Orchid">#DA70D6</color>
     <color name="Thistle">#D8BFD8</color>
     <color name="LightGrey">#D3D3D3</color>
@@ -230,4 +230,7 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+    <color name="xanhdam">#0C1137</color>
+    <color name="xam">#697A82</color>
+    <color name="vang">#EDC611</color>
 </resources>

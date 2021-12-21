@@ -40,4 +40,6 @@
     <string name="sort_percent">growth rate</string>
     <string name="app_name_title" translatable="false">.</string>
     <string name="sort_as">Sort_as: ...</string>
+    <string name="sortpricetang">Prices go up</string>
+    <string name="sortpricegiam">Prices go down</string>
 </resources>

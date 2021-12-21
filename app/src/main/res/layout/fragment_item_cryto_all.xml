@@ -4,15 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".item_cryto_all">
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sf_refresh_layout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <Spinner
+               android:id="@+id/Spinner_sort"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/crypto_all"/>
+           <androidx.recyclerview.widget.RecyclerView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/crypto_all"
+               />
+       </LinearLayout>
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>
