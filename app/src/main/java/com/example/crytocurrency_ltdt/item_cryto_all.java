@@ -59,6 +59,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
         float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
         Context context = Util.changeLang(getActivity().getBaseContext(), lang_code ,f );
+
         SharedPreferences sharedPreferences1 = context.getSharedPreferences("sniper", Context.MODE_PRIVATE);
         recyclerView =view.findViewById(R.id.crypto_all);
         crytoArrayList =new ArrayList<>();

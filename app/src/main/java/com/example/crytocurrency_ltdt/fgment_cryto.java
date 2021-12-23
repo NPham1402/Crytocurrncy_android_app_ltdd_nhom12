@@ -54,10 +54,12 @@ public class fgment_cryto extends Fragment {
         spinerSort.setSelection(items.size() - 1);*/
 
 
-        spinerSort = (Spinner)view.findViewById(R.id.spinner3);
+        /*spinerSort = (Spinner)view.findViewById(R.id.spinner3);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.sort,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinerSort.setAdapter(adapter);
+        spinerSort.setAdapter(adapter);*/
+        
+
         /*spinerSort.setSelection(adapter.getCount() - 1);
         spinerSort.setOnTouchListener(new View.OnTouchListener() {
 

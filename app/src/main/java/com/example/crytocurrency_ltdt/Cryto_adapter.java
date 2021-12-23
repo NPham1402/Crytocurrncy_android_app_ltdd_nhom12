@@ -43,7 +43,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     Cryto cryto=crytos.get(position);
     holder.ticker.setText(cryto.getSymbol());
     holder.namem.setText(cryto.getName());
-    holder.totalValue.setText( ( ""+cryto.getPrice() ) );
+    holder.totalValue.setText( ( ""+(double) Math.round(  cryto.getPrice() * 100) / 100 ) );
     holder.ranking.setText(cryto.getRank());
     //holder.stockContainer.setBackgroundColor(Color.parseColor(cryto.getColor()));
         double a=cryto.getLastPrice();
@@ -59,10 +59,11 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
                 context.startActivity(intent);
             }
         });
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.UP);
         //double kq = (double) Math.round(((a-b) * 10000)) / 10000;
         double kq2 = b - a ;
+        double kq3 = (double) Math.round(  b * 100) / 100 ;
         double tron =  (double) Math.round(  ( ( (b-a)/a )*100 ) * 100) / 100   ;
         if ((a-b)>0)
         {
@@ -77,7 +78,10 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
             //holder.changePercent.setText((  tron + "%"));
         }
 
-        holder.changePercent2.setText( ( df.format(b) +"" ));
+        /*Dấu phẩy version*/
+        /*holder.changePercent2.setText( ( df.format(b) +"" ));*/
+
+        holder.changePercent2.setText((kq3 + "") );
         holder.changePercent.setText( ( tron  + "%" ) );
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
