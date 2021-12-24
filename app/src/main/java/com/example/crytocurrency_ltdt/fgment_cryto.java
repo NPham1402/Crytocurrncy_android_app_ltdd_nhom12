@@ -16,11 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class fgment_cryto extends Fragment {
@@ -30,6 +32,23 @@ public class fgment_cryto extends Fragment {
     View view_item;
     Toolbar tb;
     Spinner spinerSort;
+
+    private void reduceDragSensitivity() {
+        try {
+            Field ff = ViewPager2.class.getDeclaredField("mRecyclerView") ;
+            ff.setAccessible(true);
+            RecyclerView recyclerView =  (RecyclerView) ff.get(views);
+            Field touchSlopField = RecyclerView.class.getDeclaredField("mTouchSlop") ;
+            touchSlopField.setAccessible(true);
+            int touchSlop = (int) touchSlopField.get(recyclerView);
+            touchSlopField.set(recyclerView,touchSlop*4);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
   @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,6 +104,7 @@ public class fgment_cryto extends Fragment {
         tabLayout.addFragment(new Item_cryto_like());
         tabLayout.addFragment(new item_cryto_all());
         views.setPageTransformer(new ZoomOutPageTransformer());
+        reduceDragSensitivity();
         views.setAdapter(tabLayout);
         new TabLayoutMediator(tabs, views,
                 (tab, position) -> {
