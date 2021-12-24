@@ -43,7 +43,6 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     Cryto cryto=crytos.get(position);
     holder.ticker.setText(cryto.getSymbol());
     holder.namem.setText(cryto.getName());
-    holder.totalValue.setText( ( ""+cryto.getPrice() ) );
     holder.ranking.setText(cryto.getRank());
     //holder.stockContainer.setBackgroundColor(Color.parseColor(cryto.getColor()));
         double a=cryto.getLastPrice();
@@ -103,7 +102,6 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
             super(view);
             ticker=view.findViewById(R.id.ticker);
             namem=view.findViewById(R.id.name);
-            totalValue=view.findViewById(R.id.totalValue);
             changePercent=view.findViewById(R.id.changePercent);
             changePercent2=view.findViewById(R.id.changePercent2);
             ranking=view.findViewById(R.id.ranking);

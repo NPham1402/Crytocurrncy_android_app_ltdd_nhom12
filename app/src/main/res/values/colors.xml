@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="sea">#05668d</color>
+    <color name="vienxanh">#05668d</color>
     <color name="spicy_salmon">#ff5655</color>
     <color name="color_accent">#be6663</color>
     <color name="color_primary">#D5FFD9</color>
@@ -42,9 +42,9 @@
     <color name="snackbar_bg">@color/color_accent</color>
     <color name="snackbar_text">@color/white</color>
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
+    <color name="vientim">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="vienxanhla">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

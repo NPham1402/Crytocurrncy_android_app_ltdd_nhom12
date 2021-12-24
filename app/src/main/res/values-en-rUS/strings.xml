@@ -37,4 +37,6 @@
     <string name="dark_mode_pin">Battery saved</string>
     <string name="sortpricetang">Prices go up</string>
     <string name="sortpricegiam">Prices go down</string>
+    <string name="introduction_app_start">App Introduction</string>
+    <string name="introduction_app_start2">Start</string>
 </resources>
