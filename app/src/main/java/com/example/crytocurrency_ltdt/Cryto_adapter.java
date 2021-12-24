@@ -48,9 +48,10 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     //holder.stockContainer.setBackgroundColor(Color.parseColor(cryto.getColor()));
         double a=cryto.getLastPrice();
         double b= cryto.getNewPrice();
-        Log.e("test",(a)+"");
-        Log.e("test",(b)+"");
-        Log.e("test",(a-b)+"");
+        Log.e("rank",cryto.getRank()+"");
+        Log.e("a",(a)+"");
+        Log.e("b",(b)+"");
+        Log.e("a-b",(a-b)+"");
         holder.stockContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,8 +82,20 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
         /*Dấu phẩy version*/
         /*holder.changePercent2.setText( ( df.format(b) +"" ));*/
 
-        holder.changePercent2.setText((kq3 + "") );
-        holder.changePercent.setText( ( tron  + "%" ) );
+        if(a !=0 && b !=0) {
+            holder.changePercent2.setText((kq3 + ""));
+            holder.changePercent.setText((tron + "%"));
+        }
+        else if (a == 0)
+        {
+            holder.changePercent2.setText((kq3 + ""));
+            holder.changePercent.setText(("không có dữ liệu giá cũ"));
+        }
+        else {
+            holder.changePercent2.setText(("không có dữ liệu giá cmới"));
+            holder.changePercent.setText(("0%"));
+        }
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

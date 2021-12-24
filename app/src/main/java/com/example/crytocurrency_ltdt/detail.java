@@ -1,6 +1,14 @@
 package com.example.crytocurrency_ltdt;
 
+
+
+import static com.google.android.material.internal.ContextUtils.getActivity;
+import static java.security.AccessController.getContext;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -19,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -33,11 +42,13 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URI;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,11 +57,13 @@ import java.util.Map;
 
 public class detail extends AppCompatActivity implements OnChartValueSelectedListener  {
     TextView sysmbol,name,rank,price;
+    Context context;
     WebView description;
     ImageView icon;
     String uuid;
     String name_item,description_iteml,url2,price_item,ranking,sysmbol_item;
     ArrayList<pricehitory> sparkline;
+    Uri myUri; //= Uri.parse(url2);
     private CombinedChart mChart;
     @Override
     public boolean onSupportNavigateUp() {
@@ -63,6 +76,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        context = this;
         savedInstanceState=getIntent().getExtras();
         mChart = (CombinedChart) findViewById(R.id.linechart);
         mChart.getDescription().setEnabled(false);
@@ -80,7 +94,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
         description=findViewById(R.id.detail_description);
         rank=findViewById(R.id.detail_rank);
         price=findViewById(R.id.detail_price);
-        icon=findViewById(R.id.icon);
+        icon=(ImageView) findViewById(R.id.icon);
         uuid= savedInstanceState.getString("uuid");
         RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -136,8 +150,12 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 description.loadData(encodedHtml,"text/html","base64");
                 price.setText(df.format(Double.parseDouble(price_item)));
                 rank.setText(ranking);
+                GlideToVectorYou.justLoadImage(detail.this, myUri, icon);
             }
+
         });
+        GlideToVectorYou.justLoadImage(this, myUri, icon);
+        /*Glide.with(this).load(url2).into(icon);*/
 
     }
     private static DataSet dataChart(Float [] data,String uuid) {
@@ -240,6 +258,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                          name_item=dataobject.getString("name");
                         description_iteml=dataobject.getString("description");
                      url2= dataobject.getString("iconUrl");
+                    myUri = Uri.parse(dataobject.getString("iconUrl"));
                         JSONArray sparkline_item=dataobject.getJSONArray("sparkline");
                          price_item=dataobject.getString("price");
                         ranking=dataobject.getString("rank");
