@@ -1,5 +1,6 @@
 package com.example.crytocurrency_ltdt;
 
+import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.app.Activity;
 import android.content.Context;
@@ -7,11 +8,17 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -34,6 +41,19 @@ public class fgment_setting extends PreferenceFragmentCompat {
     public String dark_mode;
 
 
+    /*@Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = requireContext().getTheme();
+        theme.resolveAttribute(R.color.negative_red, typedValue, true);
+
+        @ColorInt int color = typedValue.data;
+
+        view.setBackgroundColor(color);
+
+        super.onViewCreated(view, savedInstanceState);
+    }*/
 
 //SharedPreferences shP = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
@@ -47,8 +67,6 @@ public class fgment_setting extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-
-
         setPreferencesFromResource(R.xml.setting, rootKey);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());

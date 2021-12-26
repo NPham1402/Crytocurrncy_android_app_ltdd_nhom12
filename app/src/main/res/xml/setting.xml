@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    >
+    xmlns:tools="http://schemas.android.com/tools">
     <PreferenceCategory
         android:icon="@drawable/ic_baseline_text_format_24"
-        android:textColor="#00796B"
         android:title="@string/st_text_category"
         tools:ignore="TextContrastCheck">
         <ListPreference
@@ -30,21 +27,21 @@
         android:icon="@drawable/ic_baseline_miscellaneous_services_24"
         android:title="@string/st_options_categore">
         <ListPreference
-        android:icon="@drawable/ic_dark_light"
-        android:key="dark_mode"
-        android:title="@string/st_options_darkmode"
-        app:useSimpleSummaryProvider="true"
-        android:defaultValue="MODE_NIGHT_FOLLOW_SYSTEM"
-        android:entries="@array/dark_mode"
-        android:entryValues="@array/dark_mode_values"/>
+            android:defaultValue="MODE_NIGHT_FOLLOW_SYSTEM"
+            android:entries="@array/dark_mode"
+            android:entryValues="@array/dark_mode_values"
+            android:icon="@drawable/ic_dark_light"
+            android:key="dark_mode"
+            android:title="@string/st_options_darkmode"
+            app:useSimpleSummaryProvider="true" />
         <ListPreference
-            android:icon="@drawable/ic_baseline_timer_24"
-            android:title="@string/st_options_time_update_price"
+            android:defaultValue="5"
             android:entries="@array/time_notice"
-            android:key="time_update_price"
             android:entryValues="@array/time_notice_values"
-            app:useSimpleSummaryProvider="true"
-            android:defaultValue="5"/>
-        <Preference android:layout="@layout/activity_button_openintroduction"/>
+            android:icon="@drawable/ic_baseline_timer_24"
+            android:key="time_update_price"
+            android:title="@string/st_options_time_update_price"
+            app:useSimpleSummaryProvider="true" />
+        <Preference android:layout="@layout/activity_button_openintroduction" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -36,8 +36,9 @@
         <activity
             android:name=".activitive_screen_main"
             android:exported="true"
-            android:configChanges="locale|orientation|uiMode"
-            />
+            android:theme="@style/PreferenceTheme2"/>
+            <!--android:theme="@style/PreferenceTheme2"-->
+            <!--android:configChanges="locale|orientation|uiMode"-->
         <activity
             android:name=".MainActivity"
             android:exported="true"

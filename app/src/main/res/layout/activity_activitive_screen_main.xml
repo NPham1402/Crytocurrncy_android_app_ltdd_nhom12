@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitive_screen_main">
+    tools:context=".activitive_screen_main"
+    >
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vtl_main"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="55dp"
         layout_height="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_marginBottom="55dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        />
 
     <eu.long1.spacetablayout.SpaceTabLayout
         android:id="@+id/stl_main"
@@ -25,9 +28,9 @@
         app:number_of_tabs="three"
         app:starting_position="two"
         app:tab_color="@color/xanhdam"
+        app:text_color="@color/vang"
         app:text_one="@string/news_tab_layout"
         app:text_three="@string/setting_tab_layout"
-        app:text_two="@string/cryto_tab_layout"
-        app:text_color="@color/vang"/>
+        app:text_two="@string/cryto_tab_layout" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

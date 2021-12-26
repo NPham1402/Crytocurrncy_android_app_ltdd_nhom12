@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--<color name="mau_nen">#05668d</color>-->
+    <color name="mau_nen">#05668d</color>
+    <color name="xanhdam">#0C1137</color>
+
+    <color name="xam">#697A82</color>
+    <color name="vang">#EDC611</color>
+
    <!-- <color name="primary_material_dark">#05668d</color>
     <color name="primary_dark_material_dark">#EE82EE</color>
 

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--<color name="mau_nen">#e55b5b</color>-->
+    <color name="mau_nen">#e55b5b</color>
+    <color name="xanhdam">#C9C9C9</color>> <!--nền-->
+   <!-- <color name="xanhdam">#be6663</color>>--> <!--nền-->
+    <color name="xam">#ffffff</color> <!--khung-->
+    <color name="vang">#000000</color> <!--tên-->
+
+
+    <color name="preference_fallback_accent_color">#009900</color>
+
    <!-- <color name="primary_material_dark">#05668d</color>
     <color name="primary_dark_material_dark">#EE82EE</color>
     <color name="background_material_dark">#05668d</color>
@@ -230,7 +238,4 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
-    <color name="xanhdam">#0C1137</color>
-    <color name="xam">#697A82</color>
-    <color name="vang">#EDC611</color>
 </resources>
