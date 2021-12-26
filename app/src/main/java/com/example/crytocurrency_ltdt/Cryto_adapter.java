@@ -89,10 +89,10 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
         else if (a == 0)
         {
             holder.changePercent2.setText((kq3 + ""));
-            holder.changePercent.setText(("không có dữ liệu giá cũ"));
+            holder.changePercent.setText((R.string.OldPrice_error));
         }
         else {
-            holder.changePercent2.setText(("không có dữ liệu giá cmới"));
+            holder.changePercent2.setText((R.string.LastPrice_error));
             holder.changePercent.setText(("0%"));
         }
 

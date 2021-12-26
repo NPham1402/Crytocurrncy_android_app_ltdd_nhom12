@@ -41,7 +41,7 @@ public class fgment_cryto extends Fragment {
             Field touchSlopField = RecyclerView.class.getDeclaredField("mTouchSlop") ;
             touchSlopField.setAccessible(true);
             int touchSlop = (int) touchSlopField.get(recyclerView);
-            touchSlopField.set(recyclerView,touchSlop*4);
+            touchSlopField.set(recyclerView,touchSlop*4);    /*<---- ĐỘ NHẠY CỦA VIEWPAGE*/
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

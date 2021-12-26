@@ -42,4 +42,6 @@
     <string name="sort_as">Sort_as: ...</string>
     <string name="sortpricetang">Prices go up</string>
     <string name="sortpricegiam">Prices go down</string>
+    <string name="OldPrice_error">No data on Old price</string>
+    <string name="LastPrice_error">No data on Newest price</string>
 </resources>

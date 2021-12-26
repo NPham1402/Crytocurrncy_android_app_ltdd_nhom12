@@ -18,6 +18,9 @@
     <string name="sort_price">Theo giá</string>
     <string name="sort_percent">theo % tăng trưởng</string>
 
+    <string name="OldPrice_error">không có dữ liệu giá cũ</string>
+    <string name="LastPrice_error">không có dữ liệu giá mới</string>
+
     <!--<string-array name="sort">
         <item>@string/sort_name </item>
         <item>@string/sort_price</item>

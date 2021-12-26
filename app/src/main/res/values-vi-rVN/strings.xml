@@ -41,4 +41,6 @@
     <string name="sort_as">sắp xếp theo: ...</string>
     <string name="sortpricetang">Giá tăng dần</string>
     <string name="sortpricegiam">Giá giảm dần</string>
+    <string name="OldPrice_error">không có dữ liệu giá cũ</string>
+    <string name="LastPrice_error">không có dữ liệu giá mới</string>
 </resources>
