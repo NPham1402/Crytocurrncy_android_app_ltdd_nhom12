@@ -8,15 +8,18 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class introduction4 extends Fragment {
+    private TextView TV2;
     @Override
     public void onViewCreated(@NonNull View view1, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view1, savedInstanceState);
+        TV2 = getView().findViewById(R.id.textView2);
         views=view1.findViewById(R.id.lo_login);
         views.setOnClickListener(new View.OnClickListener() {
             @Override

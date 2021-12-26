@@ -43,7 +43,6 @@
     <string name="sortpricegiam">Giá giảm dần</string>
     <string name="OldPrice_error">không có dữ liệu giá cũ</string>
     <string name="LastPrice_error">không có dữ liệu giá mới</string>
-    <string name="sortpricegiam">" Giá giảm dần"</string>
     <string name="introduction_app_start">Giới thiệu ứng dụng</string>
     <string name="introduction_app_start2">Bắt Đầu</string>
 </resources>

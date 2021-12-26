@@ -100,7 +100,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 .centerCrop()
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round);
-        getcrypto_history(uuid, "1y", new VolleyCallBack() {
+        getcrypto_history(uuid, "24h", new VolleyCallBack() {
             @Override
             public void onSuccess() {
                 YAxis rightAxis = mChart.getAxisRight();

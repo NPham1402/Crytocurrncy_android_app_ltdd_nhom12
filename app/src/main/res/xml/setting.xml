@@ -27,27 +27,6 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:icon="@drawable/ic_baseline_circle_notifications_24"
-        android:textColor="#00796B"
-        android:title="@string/st_notification_category"
-        tools:ignore="TextContrastCheck">
-        <SwitchPreference
-            android:icon="@drawable/ic_baseline_notifications_off_24"
-            android:key="turn_on_notification"
-            android:summary="Bật thông báo"
-            android:summaryOff="Tắt thông báo"
-            android:title="@string/st_notification_turnon" />
-        <ListPreference
-            android:icon="@drawable/ic_baseline_notifications_paused_24"
-            android:defaultValue="15"
-            android:entries="@array/time_notice"
-            android:entryValues="@array/time_notice_values"
-            app:useSimpleSummaryProvider="true"
-            android:key="time_notification"
-            android:title="@string/st_notification_time" />
-
-    </PreferenceCategory>
-    <PreferenceCategory
         android:icon="@drawable/ic_baseline_miscellaneous_services_24"
         android:title="@string/st_options_categore">
         <ListPreference
