@@ -33,7 +33,8 @@
         <item>@string/co_chu_normal</item>
         <item>@string/co_chu_big</item>
     </string-array>
-
+    <string name="introduction_app_start2">Start</string>
+    <string name="introduction_app_start">Giới thiệu ứng dụng</string>
     <string-array name="co_chu_values">
         <item>0.5f</item>
         <item>1.0f</item>
@@ -55,8 +56,8 @@
 
     <string name="sortaz" translatable="false">A-Z</string>
     <string name="sortza" translatable="false">Z-A</string>
-    <string name="sortpricetang" >Giá tăng dần </string>
-    <string name="sortpricegiam" >Giá giảm dần</string>
+    <string name="sortpricetang">Giá tăng dần </string>
+    <string name="sortpricegiam">Giá giảm dần</string>
 
 
     <string-array name="sort">
@@ -79,7 +80,7 @@
         <item>MODE_NIGHT_AUTO_TIME</item>
         <item>MODE_NIGHT_AUTO_BATTERY</item>
     </string-array>
-    <string name="channel_name">news_channel</string>
+    <string name="channel_name" translatable="false">news_channel</string>
     <string name="channel_description" translatable="false">news_channel description</string>
     <string-array name="ngon_ngu">
         <item>@string/English</item>

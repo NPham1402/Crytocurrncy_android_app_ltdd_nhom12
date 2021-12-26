@@ -2,6 +2,7 @@ package com.example.crytocurrency_ltdt;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +45,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
     ArrayList<Cryto> crytoArrayList;
     Cryto_adapter adapter;
     Util util;
+
     SwipeRefreshLayout swipe;
     Spinner spinner;
     @Override
@@ -51,6 +55,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         return inflater.inflate(R.layout.fragment_item_cryto_all, container, false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -65,14 +70,11 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         crytoArrayList =new ArrayList<>();
         int a=sharedPreferences1.getInt("snipervalues",2);
         Toast.makeText(getContext(),""+a,Toast.LENGTH_SHORT).show();
-        getcrypto(a);
         swipe =view.findViewById(R.id.sf_refresh_layout1);
         swipe.setOnRefreshListener(this);
         LinearLayoutManager llm =new LinearLayoutManager(getContext());
-
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
-        Log.e("gvzxfh",""+crytoArrayList.size());
         adapter=new Cryto_adapter(crytoArrayList,getContext());
         recyclerView.setAdapter(adapter);
         spinner= view.findViewById(R.id.Spinner_sort);
@@ -100,7 +102,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     public void getcrypto(int position) {
-        String url=" https://api.coinranking.com/v2/coins?timePeriod=24h";
+        String url=" https://api.coinranking.com/v2/coins?limit=100";
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         JsonObjectRequest jsonObjectReques= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -131,6 +133,20 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                         }
                             double newPrice=Double.parseDouble(data_sparkline.get(data_sparkline.length()-1).toString());
                         crytoArrayList.add(new Cryto(uuid,ticker,name,color,price,rank,lastPrice,newPrice));
+                        if(position<=1){
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                crytoArrayList.sort(((o1, o2) -> o1.getName().compareTo(o2.getName())));
+                            }
+                            if (position==1){
+                                Collections.reverse(crytoArrayList);
+                            }
+
+                        }
+                        if (position==3){
+                            Collections.reverse(crytoArrayList);
+                        }
+
+
 
                     }
                     adapter.notifyDataSetChanged();
@@ -155,7 +171,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
     }
     @Override
     public void onRefresh() {
-        Toast.makeText(getContext(), R.string.Refresh, Toast.LENGTH_SHORT).show();
+
         crytoArrayList.clear();
         new Handler().postDelayed(new Runnable() {
             @Override

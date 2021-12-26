@@ -40,4 +40,6 @@
     <string name="sort_as">sắp xếp theo: ...</string>
     <string name="sortpricetang">Giá tăng dần</string>
     <string name="sortpricegiam">" Giá giảm dần"</string>
+    <string name="introduction_app_start">Giới thiệu ứng dụng</string>
+    <string name="introduction_app_start2">Bắt Đầu</string>
 </resources>
