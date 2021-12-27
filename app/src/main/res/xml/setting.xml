@@ -42,6 +42,8 @@
             android:key="time_update_price"
             android:title="@string/st_options_time_update_price"
             app:useSimpleSummaryProvider="true" />
-        <Preference android:layout="@layout/activity_button_openintroduction" />
+        <Preference
+            android:key="Intro"
+            android:layout="@layout/activity_button_openintroduction" />
     </PreferenceCategory>
 </PreferenceScreen>

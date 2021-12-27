@@ -1,5 +1,6 @@
 package com.example.crytocurrency_ltdt;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.app.Activity;
@@ -76,8 +77,20 @@ public class fgment_setting extends PreferenceFragmentCompat {
 
         Ncontext = this.getContext();
 
-        ListPreference Language = (ListPreference) findPreference("Language");
+        Preference BtnIntro = (Preference) findPreference("Intro");
+        BtnIntro.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                String key = preference.getKey();
+                Intent intent = new Intent(getActivity(), introduction.class);
+                startActivity(intent);
+                Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
 
+
+        ListPreference Language = (ListPreference) findPreference("Language");
         Language.setOnPreferenceChangeListener((preference, newValue) -> {
                     language =  String.valueOf(newValue);
             //activitive_screen_main.setlocal(language);
