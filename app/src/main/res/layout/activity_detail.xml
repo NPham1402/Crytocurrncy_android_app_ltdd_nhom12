@@ -31,23 +31,25 @@
                 android:layout_height="wrap_content"
                 android:text="TimeL"
                 android:textColor="@color/vang"/>
+
                 <SeekBar
-                android:id="@+id/sb_chart"
-                style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:max="4"
-                android:progress="3" />
+                    android:id="@+id/sb_chart"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="3"
+                    android:progress="0" />
             </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"/>
 
-            <com.github.mikephil.charting.charts.CombinedChart
+            <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/linechart"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
+                android:layout_height="300dp"
+                android:backgroundTint="@color/xanhdam"/>
 
             <Space
                 android:layout_width="match_parent"

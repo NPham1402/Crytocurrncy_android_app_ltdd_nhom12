@@ -20,6 +20,7 @@
 
     <string name="OldPrice_error">không có dữ liệu giá cũ</string>
     <string name="LastPrice_error">không có dữ liệu giá mới</string>
+    <string name="PriceChart">Biểu đồ biến động giá</string>
 
     <!--<string-array name="sort">
         <item>@string/sort_name </item>

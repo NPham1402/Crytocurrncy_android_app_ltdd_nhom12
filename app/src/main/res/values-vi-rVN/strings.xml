@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="PriceChart">Biểu đồ biến động giá</string>
     <string name="app_name">CrytoCurrency_ltdt</string>
     <string name="news_tab_layout">Tin Tức</string>
     <string name="cryto_tab_layout">Tiền Ảo</string>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="PriceChart">PriceChart</string>
     <string name="app_name">CrytoCurrency_ltdt</string>
     <string name="news_tab_layout">News</string>
     <string name="cryto_tab_layout">Crytocurrency</string>
@@ -46,4 +47,5 @@
     <string name="LastPrice_error">No data on Newest price</string>
     <string name="introduction_app_start">App Introduction</string>
     <string name="introduction_app_start2">Start</string>
+
 </resources>
