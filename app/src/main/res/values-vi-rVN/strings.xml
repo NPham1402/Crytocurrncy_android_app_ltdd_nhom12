@@ -6,6 +6,9 @@
     <string name="setting_tab_layout">Cài Đặt</string>
     <string name="st_text_category">Chữ</string>
     <string name="st_textsize">Cỡ chữ</string>
+    <string name="OldPrice_error">không có dữ liệu giá cũ</string>
+    <string name="LastPrice_error">không có dữ liệu giá mới</string>
+    <string name="PriceChart">Biểu đồ biến động giá</string>
     <string name="st_language">Ngôn Ngữ</string>
     <string name="st_notification_category">Thông báo</string>
     <string name="st_notification_turnon">Bật/Tắt thông báo</string>

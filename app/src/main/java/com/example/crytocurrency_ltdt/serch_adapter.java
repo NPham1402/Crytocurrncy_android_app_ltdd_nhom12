@@ -44,10 +44,37 @@ public class serch_adapter extends RecyclerView.Adapter<serch_adapter.ViewHolder
             context.startActivity(intent);
         }
     });
+        if (preconfig.read(context)!=null) {
+            if(searc.status==true) {
+                holder.imageView.setImageResource(R.drawable.ic_baseline_remove_circle_24);
+            }
+            else
+            {
+                holder.imageView.setImageResource(R.drawable.ic_baseline_add_circle_24);
+            }
+        }
+
     holder.imageView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (preconfig.read(context) == null) {
+                ArrayList<String> uuids = new ArrayList<>();
+                uuids.add("Nguyen");
+                preconfig.write(context, uuids);
 
+            }
+            if (!preconfig.read(context).contains(searc.uuid)) {
+                holder.imageView.setImageResource(R.drawable.ic_baseline_remove_circle_24);
+                ArrayList<String> uuid = new ArrayList<>();
+                uuid.addAll(preconfig.read(context));
+                uuid.add(searc.getUuid());
+                preconfig.write(context, uuid);
+                preconfig.read(context);
+            } else {
+                holder.imageView.setImageResource(R.drawable.ic_baseline_add_circle_24);
+                preconfig.remove(context,searc.getUuid());
+
+            }
 
         }
     });

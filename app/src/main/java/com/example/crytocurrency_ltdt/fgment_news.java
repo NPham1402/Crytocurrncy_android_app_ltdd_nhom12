@@ -76,7 +76,7 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
 
     }
     public    void getnews_api(){
-        String url="https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2";
+        String url="https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=2https://cryptopanic.com/api/v1/posts/?auth_token=f64c65903be4071cde0759ad80e39a43be78e94d&public=true&page=5";
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -88,10 +88,8 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
                         JSONObject dataobject=data.getJSONObject(i);
                         String domain=dataobject.getString("domain");
                         String title=dataobject.getString("title");
-                        Log.e("lay",domain);
                         String date=dataobject.getString("published_at");
                         String url=dataobject.getString("url");
-                        Log.e("theo doi"," "+title+" "+date+" "+i);
                         newsArrayList.add(new News(title,date,domain,url,"Crypto Panic"));
                     }
                     news_adapter.notifyDataSetChanged();

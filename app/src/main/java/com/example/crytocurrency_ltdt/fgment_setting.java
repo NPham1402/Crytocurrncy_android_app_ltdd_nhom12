@@ -1,14 +1,9 @@
 package com.example.crytocurrency_ltdt;
 
-import android.util.DisplayMetrics;
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -16,11 +11,6 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
-import androidx.preference.PreferenceScreen;
-import com.bumptech.glide.request.RequestOptions;
-
-import java.util.Locale;
-import java.util.Objects;
 
 public class fgment_setting extends PreferenceFragmentCompat {
 
@@ -75,6 +65,22 @@ public class fgment_setting extends PreferenceFragmentCompat {
             return true;
                     //activitive_screen_main.setlocal(language);
                 });
+        Preference BtnIntro = (Preference) findPreference("Intro");
+        BtnIntro.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                String key = preference.getKey();
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("sniper", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("intrudution",false);
+                editor.commit();
+                Intent intent = new Intent(getActivity(), introduction.class);
+                startActivity(intent);
+                Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();
+                getActivity().finish();
+                return true;
+            }
+        });
 
         ListPreference Textsize = (ListPreference) findPreference("textsize");
 

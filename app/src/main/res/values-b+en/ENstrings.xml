@@ -34,8 +34,8 @@
     <string name="dark_mode_system">System Default</string>
     <string name="dark_mode_time">Day time</string>
     <string name="dark_mode_pin">Battery saved</string>
-    <string name="sortpricetang">Prices go up</string>
-    <string name="sortpricegiam">Prices go down</string>
+    <string name="sortpricetang">Prices: Lowest first</string>
+    <string name="sortpricegiam">Prices: Highest first</string>
     <string name="introduction_app_start">App Introduction</string>
     <string name="introduction_app_start2">Start</string>
 </resources>

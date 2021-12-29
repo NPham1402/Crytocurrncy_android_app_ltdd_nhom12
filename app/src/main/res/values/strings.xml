@@ -24,7 +24,9 @@
         <item>1.0f</item>
         <item>1.8f</item>
     </string-array>
-
+    <string name="OldPrice_error">không có dữ liệu giá cũ</string>
+    <string name="LastPrice_error">không có dữ liệu giá mới</string>
+    <string name="PriceChart">Biểu đồ biến động giá</string>
 
     <string-array name="SBENDGSD">
         <item>@string/dark_mod_valuese_dark</item>

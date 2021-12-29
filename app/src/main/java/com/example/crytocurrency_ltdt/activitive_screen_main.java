@@ -1,24 +1,19 @@
 package com.example.crytocurrency_ltdt;
 
-import static java.security.AccessController.getContext;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.github.mikephil.charting.utils.Utils;
-
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -51,6 +46,28 @@ public class activitive_screen_main extends AppCompatActivity {
          Util.adjustFontSize(this,f);
         setContentView(R.layout.activity_activitive_screen_main);
         List<Fragment> fragmentList = new ArrayList<>();
+        String dark_mode = sharedPreferences.getString("dark_mode", "MODE_NIGHT_FOLLOW_SYSTEM");
+        if (dark_mode.contains("MODE_NIGHT_NO")) {
+            Toast.makeText(this, R.string.dark_mode_light, Toast.LENGTH_SHORT).show();
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        else if (dark_mode.contains("MODE_NIGHT_YES")) {
+            Toast.makeText(this, R.string.dark_mode_dark, Toast.LENGTH_SHORT).show();
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else if (dark_mode.contains("MODE_NIGHT_FOLLOW_SYSTEM")) {
+            Toast.makeText(this, R.string.dark_mode_system, Toast.LENGTH_SHORT).show();
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
+        else if (dark_mode.contains("MODE_NIGHT_AUTO_TIME")) {
+            Toast.makeText(this, R.string.dark_mode_time, Toast.LENGTH_SHORT).show();
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_TIME);
+        }
+        else if (dark_mode.contains("MODE_NIGHT_AUTO_BATTERY")) {
+            Toast.makeText(this, R.string.dark_mode_pin, Toast.LENGTH_SHORT).show();
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+        }
+
         fragmentList.add(new fgment_news());
         fragmentList.add(new fgment_cryto()                                                                                                                                                                      );
         fragmentList.add(new fgment_setting());

@@ -6,15 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".detail"
-    android:background="@color/xam">
+    android:background="@color/white">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/xanhdam"
+        android:background="@color/Gray"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:titleTextColor="@color/vang"/>
+        app:titleTextColor="@color/vang" />
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -44,11 +46,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp"/>
 
-            <com.github.mikephil.charting.charts.CombinedChart
+            <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/linechart"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
-
+                android:layout_height="300dp"
+                android:backgroundTint="@color/xanhdam"/>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"/>
@@ -136,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:textSize="18dp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"/>

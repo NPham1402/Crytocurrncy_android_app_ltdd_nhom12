@@ -66,6 +66,6 @@
             android:entryValues="@array/time_notice_values"
             app:useSimpleSummaryProvider="true"
             android:defaultValue="5"/>
-        <Preference android:layout="@layout/activity_button_openintroduction"/>
+        <Preference android:layout="@layout/activity_button_openintroduction" android:key="Intro"/>
     </PreferenceCategory>
 </PreferenceScreen>

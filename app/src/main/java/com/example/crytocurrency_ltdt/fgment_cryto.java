@@ -13,10 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.lang.reflect.Field;
 
 public class fgment_cryto extends Fragment {
     TabLayout tabs;
@@ -24,7 +27,8 @@ public class fgment_cryto extends Fragment {
     ViewPager2 views;
     View view_item;
     Toolbar tb;
-  @Override
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -36,38 +40,52 @@ public class fgment_cryto extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
-        String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
+        String lang_code = sharedPreferences.getString("Language", "vi");//load it from SharedPref
         float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
-        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code ,f);
+        Context context = Util.changeLang(getActivity().getBaseContext(), lang_code, f);
 
-        tabs=view.findViewById(R.id.tab_layout_cryto);
-        views=view.findViewById(R.id.Vp_refresh_layout);
-        tabLayout= new Tablayoutadater(getChildFragmentManager(),getLifecycle());
+        tabs = view.findViewById(R.id.tab_layout_cryto);
+        views = view.findViewById(R.id.Vp_refresh_layout);
+        tabLayout = new Tablayoutadater(getChildFragmentManager(), getLifecycle());
         tabLayout.addFragment(new Item_cryto_like());
         tabLayout.addFragment(new item_cryto_all());
         views.setPageTransformer(new ZoomOutPageTransformer());
         views.setAdapter(tabLayout);
         new TabLayoutMediator(tabs, views,
                 (tab, position) -> {
-            if (position==0)
-            {
-                tab.setText(R.string.my_coin_like);
-            }
-            else {
-                tab.setText(R.string.All_coin);
-            }
+                    if (position == 0) {
+                        tab.setText(R.string.my_coin_like);
+                    } else {
+                        tab.setText(R.string.All_coin);
+                    }
                 }
         ).attach();
-        view_item=view.findViewById(R.id.total_holdings);
+        view_item = view.findViewById(R.id.total_holdings);
         view_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),search.class);
+                Intent intent = new Intent(getActivity(), search.class);
                 startActivity(intent);
             }
         });
 //        tabs.addTab(tabs.newTab().setText("All"));
 //        tabs.addTab(tabs.newTab().setText("Like"));
+        reduceDragSensitivity();
+    }
 
+    private void reduceDragSensitivity() {
+        try {
+            Field ff = ViewPager2.class.getDeclaredField("mRecyclerView");
+            ff.setAccessible(true);
+            RecyclerView recyclerView = (RecyclerView) ff.get(views);
+            Field touchSlopField = RecyclerView.class.getDeclaredField("mTouchSlop");
+            touchSlopField.setAccessible(true);
+            int touchSlop = (int) touchSlopField.get(recyclerView);
+            touchSlopField.set(recyclerView, touchSlop * 4);    /*<---- ĐỘ NHẠY CỦA VIEWPAGE*/
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }

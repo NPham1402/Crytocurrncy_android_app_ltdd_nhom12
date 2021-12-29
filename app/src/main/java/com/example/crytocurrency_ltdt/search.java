@@ -3,7 +3,6 @@ package com.example.crytocurrency_ltdt;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
@@ -70,7 +69,6 @@ public class search extends AppCompatActivity {
         getcrypto_api(new VolleyCallBack() {
             @Override
             public void onSuccess() {
-                Log.e("size1:",tickers.size()+"");
                 LinearLayoutManager llm = new LinearLayoutManager(getBaseContext());
                 llm.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(llm);
@@ -97,7 +95,7 @@ public class search extends AppCompatActivity {
 
     }
     private void search(String textSearch){
-        Log.e("textsearch:",textSearch);
+
         ArrayList<Util.searc> searchList = new ArrayList<>();
         if (searchList.size()>0){
             Adapter.clear();
@@ -129,9 +127,16 @@ public class search extends AppCompatActivity {
                         JSONObject dataobject =data.getJSONObject(i);
                         String uuid=dataobject.getString("uuid");
                         String ticker = dataobject.getString("name");
-                        Log.e("size",tickers.size()+"");
+                        Boolean status=false;
+                        try {
+                            if (preconfig.read(getBaseContext()).contains(uuid)){
+                                status=true;
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         //  crytoArrayList.add(new Cryto(ticker,name,color,price,rank,lastPrice,newPrice));
-                        tickers.add(new Util.searc(uuid,ticker));
+                        tickers.add(new Util.searc(uuid,ticker,status));
                     }
                     callBack.onSuccess();
 
