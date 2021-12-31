@@ -93,7 +93,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
         private ArrayList<String> xValue  ;
         public MyXValue(ArrayList<String> xValue) {
             this.xValue = xValue;
-        }
+        }  /* <----- 2 dòng thừa , không rõ mục ích*/
 
         @Override
         public String getFormattedValue(float value) {
