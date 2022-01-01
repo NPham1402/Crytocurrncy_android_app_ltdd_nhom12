@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toolbar;
 
@@ -23,7 +21,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 public class fgment_cryto extends Fragment {
     TabLayout tabs;
@@ -77,7 +74,7 @@ public class fgment_cryto extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.sort,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinerSort.setAdapter(adapter);*/
-        
+
 
         /*spinerSort.setSelection(adapter.getCount() - 1);
         spinerSort.setOnTouchListener(new View.OnTouchListener() {
@@ -104,7 +101,6 @@ public class fgment_cryto extends Fragment {
         tabLayout.addFragment(new Item_cryto_like());
         tabLayout.addFragment(new item_cryto_all());
         views.setPageTransformer(new ZoomOutPageTransformer());
-        reduceDragSensitivity();
         views.setAdapter(tabLayout);
         new TabLayoutMediator(tabs, views,
                 (tab, position) -> {
@@ -127,6 +123,8 @@ public class fgment_cryto extends Fragment {
         });
 //        tabs.addTab(tabs.newTab().setText("All"));
 //        tabs.addTab(tabs.newTab().setText("Like"));
+        reduceDragSensitivity();
+    }
 
     }
-}
+

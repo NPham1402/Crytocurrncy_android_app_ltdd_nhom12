@@ -45,7 +45,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
     ArrayList<Cryto> crytoArrayList;
     Cryto_adapter adapter;
     Util util;
-
+    Context context=getContext();
     SwipeRefreshLayout swipe;
     Spinner spinner;
     @Override
@@ -120,19 +120,29 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                         String rank=dataobject.getString("rank");
                         JSONArray data_sparkline=dataobject.getJSONArray("sparkline");
                         double lastPrice = 0;
-                        for (int j=0; i<data_sparkline.length()-1; j++){
+                        for (int j=0; j<data_sparkline.length(); j++){
                             if (data_sparkline.getString(j)=="null")
                             {
                                 continue;
                             }
                             else{
-                                Log.e("taf",data_sparkline.getString(j));
                                 lastPrice=Double.parseDouble(data_sparkline.get(j).toString());
                                 break;
                             }
                         }
                             double newPrice=Double.parseDouble(data_sparkline.get(data_sparkline.length()-1).toString());
-                        crytoArrayList.add(new Cryto(uuid,ticker,name,color,price,rank,lastPrice,newPrice));
+                        Boolean status=false;
+                        try {
+                            if (preconfig.read(getContext()).contains(uuid)){
+                                status=true;
+                                Log.e(uuid,name);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                        crytoArrayList.add(new Cryto(uuid,ticker,name,color,price,rank,lastPrice,newPrice,status));
                         if(position<=1){
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                 crytoArrayList.sort(((o1, o2) -> o1.getName().compareTo(o2.getName())));
@@ -170,7 +180,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         };       requestQueue.add(jsonObjectReques);
     }
     @Override
-    public void onRefresh() {
+    public  void onRefresh() {
 
         crytoArrayList.clear();
         new Handler().postDelayed(new Runnable() {

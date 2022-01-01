@@ -4,7 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Item_cryto_like">
-
-    <!-- TODO: Update blank fragment layout -->
-
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:layout_width="match_parent"
+    android:id="@+id/refresh2"
+    android:layout_height="match_parent">   <!-- TODO: Update blank fragment layout -->
+    <GridView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:horizontalSpacing="4dp"
+        android:scrollbars="none"
+        />
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

@@ -1,24 +1,15 @@
 package com.example.crytocurrency_ltdt;
 
 
-import static androidx.core.content.ContextCompat.getSystemService;
-
 import static java.security.AccessController.getContext;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
-
-import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -52,9 +43,7 @@ public class News_notification extends BroadcastReceiver {
                         JSONObject dataobject=data.getJSONObject(i);
                         String domain=dataobject.getString("domain");
                         String title=dataobject.getString("title");
-                        Log.e("lay",domain);
                         String date=dataobject.getString("published_at");
-                        Log.e("theo doi"," "+title+" "+date+" "+i);
 
 //             //            JSONArray currencies=dataobject.getJSONArray("currencies");
 //                         String sysmbol="";

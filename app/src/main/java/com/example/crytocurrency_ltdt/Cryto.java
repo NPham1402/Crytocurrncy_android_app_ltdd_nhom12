@@ -2,7 +2,17 @@ package com.example.crytocurrency_ltdt;
 
 public class Cryto {
     private String symbol;
+    private Boolean status;
     private String uuid;
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
     public String getSymbol() {
         return symbol;
     }
@@ -74,7 +84,7 @@ public class Cryto {
     private String name;
     private String color;
 
-    public Cryto(String uuid,String symbol, String name, String color, Double price, String rank, double pricelastPrice, double newPrice) {
+    public Cryto(String uuid,String symbol, String name, String color, Double price, String rank, double pricelastPrice, double newPrice,Boolean status) {
         this.uuid=uuid;
         this.symbol = symbol;
         this.name = name;
@@ -83,6 +93,7 @@ public class Cryto {
         this.rank = rank;
         this.lastPrice = pricelastPrice;
         this.newPrice = newPrice;
+        this.status=status;
     }
 
     private Double price;

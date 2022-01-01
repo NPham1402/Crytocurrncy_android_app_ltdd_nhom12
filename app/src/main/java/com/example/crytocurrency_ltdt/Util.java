@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,10 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 
 public class Util {
@@ -155,7 +151,7 @@ public class Util {
         return crytoArrayList.size();
     }
     public  ArrayList<searc> getticker(){
-   
+
     return  arrayticker;
     }
     public Util(Context context) {
@@ -186,10 +182,8 @@ public class Util {
                         JSONObject dataobject=data.getJSONObject(i);
                         String domain=dataobject.getString("domain");
                         String title=dataobject.getString("title");
-                        Log.e("lay",domain);
                         String date=dataobject.getString("published_at");
                         String url=dataobject.getString("url");
-                        Log.e("theo doi"," "+title+" "+date+" "+i);
                         newsArrayList.add(new News(title,date,domain,url,"Crypto Panic"));
                     }
                     news_adapter.notifyDataSetChanged();
@@ -226,11 +220,22 @@ public static class searc{
     }
 
     String uuid;
-        String name;
+    Boolean status;
 
-    public searc(String uuid, String name) {
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    String name;
+
+    public searc(String uuid, String name,Boolean status) {
         this.uuid = uuid;
         this.name = name;
+        this.status = status;
     }
 }
 

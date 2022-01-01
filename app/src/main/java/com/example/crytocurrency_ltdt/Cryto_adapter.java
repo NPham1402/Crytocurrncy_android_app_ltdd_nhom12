@@ -21,15 +21,17 @@ import java.util.ArrayList;
 public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder> {
     private ArrayList<Cryto> crytos;
     private Context context;
-    Util util;
-    public void add(ArrayList<Cryto> crytos)
-    {
-    this.crytos=crytos;
+    ArrayList<String> list;
+    //  Util util;
+
+    public void add(ArrayList<Cryto> crytos) {
+        this.crytos = crytos;
     }
+
     public Cryto_adapter(ArrayList<Cryto> crytos, Context context) {
         this.crytos = crytos;
         this.context = context;
-        util=new Util(context);
+        //    util = new Util(context);
     }
 
     @Override
@@ -43,15 +45,15 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     Cryto cryto=crytos.get(position);
     holder.ticker.setText(cryto.getSymbol());
     holder.namem.setText(cryto.getName());
-    /*holder.totalValue.setText( ( ""+(double) Math.round(  cryto.getPrice() * 100) / 100 ) );*/
     holder.ranking.setText(cryto.getRank());
+        /*holder.totalValue.setText( ( ""+(double) Math.round(  cryto.getPrice() * 100) / 100 ) );*/
     //holder.stockContainer.setBackgroundColor(Color.parseColor(cryto.getColor()));
         double a=cryto.getLastPrice();
         double b= cryto.getNewPrice();
-        Log.e("rank",cryto.getRank()+"");
+        /*Log.e("rank",cryto.getRank()+"");
         Log.e("a",(a)+"");
         Log.e("b",(b)+"");
-        Log.e("a-b",(a-b)+"");
+        Log.e("a-b",(a-b)+"");*/
         holder.stockContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,10 +98,44 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
             holder.changePercent.setText(("0%"));
         }
 
+        holder.changePercent2.setText((df.format(b) + ""));
+        holder.changePercent.setText((tron + "%"));
+        if (preconfig.read(context)!=null) {
+            if(cryto.getStatus()==true) {
+                Log.e(cryto.getName(), cryto.getUuid());
+                holder.imageView.setImageResource(R.drawable.ic_baseline_remove_circle_24);
+            }
+            else
+            {
+                Log.e("false",cryto.getName());
+                holder.imageView.setImageResource(R.drawable.ic_baseline_add_circle_24);
+            }
+        }
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,cryto.getSymbol(),Toast.LENGTH_SHORT).show();
+                if (preconfig.read(context) == null) {
+                    ArrayList<String> uuids = new ArrayList<>();
+                    uuids.add("Nguyen");
+                    preconfig.write(context, uuids);
+
+                }
+                if (!preconfig.read(context).contains(cryto.getUuid())) {
+                    holder.imageView.setImageResource(R.drawable.ic_baseline_remove_circle_24);
+                    Toast.makeText(context,   cryto.getUuid()+ "", Toast.LENGTH_SHORT).show();
+                    ArrayList<String> uuid = new ArrayList<>();
+                    uuid.addAll(preconfig.read(context));
+                    uuid.add(cryto.getUuid());
+                    preconfig.write(context, uuid);
+                    preconfig.read(context);
+                } else {
+                    Toast.makeText(context, cryto.getUuid()  + "", Toast.LENGTH_SHORT).show();
+                    holder.imageView.setImageResource(R.drawable.ic_baseline_add_circle_24);
+                    preconfig.remove(context,cryto.getUuid());
+
+                }
+
             }
         });
     }
@@ -113,7 +149,7 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView ticker,namem ,changePercent, changePercent2,ranking;
+        private TextView ticker,namem,totalValue ,changePercent, changePercent2,ranking;
         private LinearLayout stockContainer;
         private ImageView imageView;
         public ViewHolder(@NonNull View view) {

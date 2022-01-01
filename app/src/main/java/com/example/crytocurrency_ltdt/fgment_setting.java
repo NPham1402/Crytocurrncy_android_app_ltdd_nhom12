@@ -68,6 +68,8 @@ public class fgment_setting extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+
+
         setPreferencesFromResource(R.xml.setting, rootKey);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
@@ -77,20 +79,8 @@ public class fgment_setting extends PreferenceFragmentCompat {
 
         Ncontext = this.getContext();
 
-        Preference BtnIntro = (Preference) findPreference("Intro");
-        BtnIntro.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                String key = preference.getKey();
-                Intent intent = new Intent(getActivity(), introduction.class);
-                startActivity(intent);
-                Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
-
-
         ListPreference Language = (ListPreference) findPreference("Language");
+
         Language.setOnPreferenceChangeListener((preference, newValue) -> {
                     language =  String.valueOf(newValue);
             //activitive_screen_main.setlocal(language);
@@ -106,6 +96,22 @@ public class fgment_setting extends PreferenceFragmentCompat {
             return true;
                     //activitive_screen_main.setlocal(language);
                 });
+        Preference BtnIntro = (Preference) findPreference("Intro");
+        BtnIntro.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                String key = preference.getKey();
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("sniper", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("intrudution",false);
+                editor.commit();
+                Intent intent = new Intent(getActivity(), introduction.class);
+                startActivity(intent);
+                Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();
+                getActivity().finish();
+                return true;
+            }
+        });
 
         ListPreference Textsize = (ListPreference) findPreference("textsize");
 

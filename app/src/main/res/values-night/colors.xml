@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="vienxanh">#009900</color>
+    <!--Moi <color name="xanhdam">#FFFFFF</color>-->
 
     <color name="mau_nen">#05668d</color>
     <color name="xanhdam">#0C1137</color>

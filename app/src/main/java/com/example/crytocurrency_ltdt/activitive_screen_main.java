@@ -1,10 +1,6 @@
 package com.example.crytocurrency_ltdt;
 
-import static java.security.AccessController.getContext;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -19,9 +15,6 @@ import androidx.preference.ListPreference;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.github.mikephil.charting.utils.Utils;
-
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -77,6 +70,8 @@ public class activitive_screen_main extends AppCompatActivity {
 
         setContentView(R.layout.activity_activitive_screen_main);
         List<Fragment> fragmentList = new ArrayList<>();
+
+
         fragmentList.add(new fgment_news());
         fragmentList.add(new fgment_cryto()                                                                                                                                                                      );
         fragmentList.add(new fgment_setting());

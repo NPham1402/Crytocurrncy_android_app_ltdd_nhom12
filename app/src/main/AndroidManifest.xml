@@ -7,11 +7,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/group_1"
+        android:configChanges="locale|orientation"
+        android:icon="@drawable/ic_lg"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CrytoCurrency_ltdt">
+        <!--New :android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">-->
+        <!--android:icon="@drawable/group_1"-->
         <activity
             android:name=".button_openintroduction"
             android:exported="false" />
@@ -27,12 +30,12 @@
         <!--Theme.AppCompat.DayNight.NoActionBar-->
         <activity
             android:name=".detail"
-            android:exported="false"
-            android:configChanges="uiMode"/>
+            android:configChanges="uiMode"
+            android:exported="false" />
         <activity
             android:name=".search"
-            android:exported="false"
-            android:configChanges="uiMode"/>
+            android:configChanges="uiMode"
+            android:exported="false" />
         <activity
             android:name=".activitive_screen_main"
             android:exported="true"
@@ -41,11 +44,10 @@
             <!--android:configChanges="locale|orientation|uiMode"-->
         <activity
             android:name=".MainActivity"
+            android:configChanges="locale|orientation|uiMode"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:configChanges="locale|orientation|uiMode">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
