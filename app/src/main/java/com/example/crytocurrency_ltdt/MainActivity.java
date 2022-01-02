@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Util.adjustFontSize(this ,f);
         setContentView(R.layout.activity_main);
         String language = sharedPreferences.getString("Language", "Vi");
-        Toast.makeText(MainActivity.this, language, Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(MainActivity.this, language, Toast.LENGTH_SHORT).show();*/
 
         if(Localehelper.getLanguage(MainActivity.this).equalsIgnoreCase("EN"))
         {

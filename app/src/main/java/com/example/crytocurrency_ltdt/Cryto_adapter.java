@@ -2,7 +2,6 @@ package com.example.crytocurrency_ltdt;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,12 +101,12 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
         holder.changePercent.setText((tron + "%"));
         if (preconfig.read(context)!=null) {
             if(cryto.getStatus()==true) {
-                Log.e(cryto.getName(), cryto.getUuid());
+                /*Log.e(cryto.getName(), cryto.getUuid());*/
                 holder.imageView.setImageResource(R.drawable.ic_baseline_remove_circle_24);
             }
             else
             {
-                Log.e("false",cryto.getName());
+                /*Log.e("false",cryto.getName());*/
                 holder.imageView.setImageResource(R.drawable.ic_baseline_add_circle_24);
             }
         }
@@ -123,14 +122,14 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
                 }
                 if (!preconfig.read(context).contains(cryto.getUuid())) {
                     holder.imageView.setImageResource(R.drawable.ic_baseline_remove_circle_24);
-                    Toast.makeText(context,   cryto.getUuid()+ "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,   cryto.getName()+ "", Toast.LENGTH_SHORT).show(); /*cryto.getUuid()*/
                     ArrayList<String> uuid = new ArrayList<>();
                     uuid.addAll(preconfig.read(context));
                     uuid.add(cryto.getUuid());
                     preconfig.write(context, uuid);
                     preconfig.read(context);
                 } else {
-                    Toast.makeText(context, cryto.getUuid()  + "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, cryto.getName()  + "", Toast.LENGTH_SHORT).show();
                     holder.imageView.setImageResource(R.drawable.ic_baseline_add_circle_24);
                     preconfig.remove(context,cryto.getUuid());
 

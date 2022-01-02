@@ -164,7 +164,7 @@ public class Util {
     public ArrayList<News> getnews(){
         newsArrayList.clear();
       //  getnews_api();
-        Toast.makeText(context,""+newsArrayList.size(), Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(context,""+newsArrayList.size(), Toast.LENGTH_SHORT).show();*/
         return newsArrayList;
     }
 

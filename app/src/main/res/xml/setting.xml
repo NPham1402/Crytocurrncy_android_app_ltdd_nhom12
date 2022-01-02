@@ -26,7 +26,7 @@
             android:title="@string/st_language"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:icon="@drawable/ic_baseline_circle_notifications_24"
         android:textColor="#00796B"
         android:title="@string/st_notification_category"
@@ -66,6 +66,7 @@
             android:entryValues="@array/time_notice_values"
             app:useSimpleSummaryProvider="true"
             android:defaultValue="5"/>
-        <Preference android:layout="@layout/activity_button_openintroduction"/>
-    </PreferenceCategory>
+        <Preference android:layout="@layout/activity_button_openintroduction" android:key="Intro"/>
+    </PreferenceCategory>-->
+    <Preference android:layout="@layout/activity_button_openintroduction" android:key="Intro"/>
 </PreferenceScreen>

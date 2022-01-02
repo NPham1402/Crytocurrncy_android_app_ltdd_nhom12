@@ -1,34 +1,19 @@
 package com.example.crytocurrency_ltdt;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.util.DisplayMetrics;
-import android.app.Activity;
+import static android.content.Context.ALARM_SERVICE;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.FragmentManager;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
-import androidx.preference.PreferenceScreen;
-import com.bumptech.glide.request.RequestOptions;
-
-import java.util.Locale;
-import java.util.Objects;
 
 public class fgment_setting extends PreferenceFragmentCompat {
 
@@ -37,9 +22,14 @@ public class fgment_setting extends PreferenceFragmentCompat {
     //Configuration configuration;
     public static final String My_share_Pref = "setting";
     Context Ncontext;
-    public String language;
+    public String language , notifVal;
     public String textsize;
     public String dark_mode;
+    Intent noftiIntent; /*= new Intent(getActivity() ,News_notification.class);*/
+    PendingIntent pendingIntent ;/*= PendingIntent.getBroadcast(getActivity(),0,noftiIntent,PendingIntent.FLAG_UPDATE_CURRENT);*/
+    AlarmManager alarmManager; /*= (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);*/
+    long currentTime = System.currentTimeMillis();
+    long minute = 1000*60;
 
 
     /*@Override
@@ -63,6 +53,9 @@ public class fgment_setting extends PreferenceFragmentCompat {
     public void onAttach(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
         float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
+         noftiIntent = new Intent(getActivity() ,News_notification.class);
+         pendingIntent = PendingIntent.getBroadcast(getActivity(),0,noftiIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+         alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
         super.onAttach(Util.adjustFontSize(context , f));
     }
 
@@ -77,6 +70,7 @@ public class fgment_setting extends PreferenceFragmentCompat {
         float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
         Context context = Util.changeLang(getActivity().getBaseContext(), lang_code , f);
 
+        notifVal = sharedPreferences.getString("time_notification","15");
         Ncontext = this.getContext();
 
         ListPreference Language = (ListPreference) findPreference("Language");
@@ -96,6 +90,40 @@ public class fgment_setting extends PreferenceFragmentCompat {
             return true;
                     //activitive_screen_main.setlocal(language);
                 });
+
+
+        /*THONG BAO ON*/
+        /*SwitchPreference nofti = (SwitchPreference) findPreference("turn_on_notification");
+
+        nofti.setOnPreferenceChangeListener((preference, newValue) -> {
+            boolean noftiBool =  sharedPreferences.getBoolean("turn_on_notification", false);
+            //activitive_screen_main.setlocal(language);
+            if (noftiBool) {
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,currentTime,minute*(Integer.parseInt(notifVal)),pendingIntent);
+            }
+            else {
+                if (alarmManager!= null) {
+                    alarmManager.cancel(pendingIntent);
+                }
+            }
+            return true;
+        });
+
+        SET TIME THÔNG BÁO
+
+        ListPreference Listnotif = (ListPreference)  findPreference("time_notification");
+
+        Listnotif.setOnPreferenceChangeListener((preference, newValue) -> {
+             notifVal =  String.valueOf(newValue);
+             if(notifVal.contains("5"))
+                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,currentTime,1000*10,pendingIntent);
+             else {
+                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, currentTime, minute * (Integer.parseInt(notifVal)), pendingIntent);
+             }
+             return true;
+        });*/
+
+
         Preference BtnIntro = (Preference) findPreference("Intro");
         BtnIntro.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -107,7 +135,7 @@ public class fgment_setting extends PreferenceFragmentCompat {
                 editor.commit();
                 Intent intent = new Intent(getActivity(), introduction.class);
                 startActivity(intent);
-                Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();
+                /*Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();*/
                 getActivity().finish();
                 return true;
             }
@@ -135,7 +163,7 @@ public class fgment_setting extends PreferenceFragmentCompat {
         });
 
 
-        ListPreference Dark_mode = (ListPreference) findPreference("dark_mode");
+       /* ListPreference Dark_mode = (ListPreference) findPreference("dark_mode");
         Dark_mode.setOnPreferenceChangeListener((preference, newValue) -> {
             dark_mode =  String.valueOf(newValue);
             //activitive_screen_main.setlocal(language);
@@ -161,7 +189,7 @@ public class fgment_setting extends PreferenceFragmentCompat {
             }
             getActivity().recreate();
             return true;
-        });
+        });*/
 
             /*if (language.contains("VN")) {
                 Toast.makeText(getContext(), R.string.Vietnamese, Toast.LENGTH_SHORT).show();

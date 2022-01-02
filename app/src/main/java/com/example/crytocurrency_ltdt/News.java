@@ -90,6 +90,7 @@ public class News {
         this.title_post = title_post;
         this.published_at = published_at;
         this.domain=domain;
+
     }
     public News(String title_post, String published_at, String domain,String code) {
         this.title_post = title_post;
