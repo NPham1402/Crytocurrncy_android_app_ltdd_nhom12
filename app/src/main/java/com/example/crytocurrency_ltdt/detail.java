@@ -243,7 +243,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
 
                         YAxis leftAxis = mChart.getAxisLeft();
                         mChart.getAxisRight().setEnabled(false);
-
+                        leftAxis.setTextColor(Color.YELLOW);
                         mChart.setData(lineDatas);
                         mChart.invalidate();
                         XAxis xAxis =  mChart.getXAxis();
@@ -308,6 +308,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 mChart.getDescription().setText("trong ngày");
                 Float [] timestamp = new Float[sparkline.size()];
                 Float [] price = new Float[sparkline.size()];
+
                 for (int i = 0; i < sparkline.size(); i++){
                     price[i]=sparkline.get(i).getPrice();
                     timestamp[i]=sparkline.get(i).getTimestamp();
@@ -339,7 +340,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
 
                 YAxis leftAxis = mChart.getAxisLeft();
                 mChart.getAxisRight().setEnabled(false);
-
+                leftAxis.setTextColor(R.color.yellowgold);
                 mChart.setData(lineDatas);
                 mChart.invalidate();
                 XAxis xAxis =  mChart.getXAxis();
