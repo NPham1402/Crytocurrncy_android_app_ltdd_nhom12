@@ -8,8 +8,10 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
@@ -62,7 +64,7 @@ public class activitive_screen_main extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
          Util.adjustFontSize(this,f);
-        /* String dark_mode = sharedPreferences.getString("dark_mode", "MODE_NIGHT_FOLLOW_SYSTEM");
+        String dark_mode = sharedPreferences.getString("dark_mode", "MODE_NIGHT_FOLLOW_SYSTEM");
             if (dark_mode.contains("MODE_NIGHT_NO")) {
                 Toast.makeText(this, R.string.dark_mode_light, Toast.LENGTH_SHORT).show();
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -83,7 +85,7 @@ public class activitive_screen_main extends AppCompatActivity {
                 Toast.makeText(this, R.string.dark_mode_pin, Toast.LENGTH_SHORT).show();
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
             }
-*/
+
 
         setContentView(R.layout.activity_activitive_screen_main);
         List<Fragment> fragmentList = new ArrayList<>();

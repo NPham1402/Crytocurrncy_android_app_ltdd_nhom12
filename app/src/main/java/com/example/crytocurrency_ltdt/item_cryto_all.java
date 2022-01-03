@@ -160,7 +160,6 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                     }
                     adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
-                    Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {

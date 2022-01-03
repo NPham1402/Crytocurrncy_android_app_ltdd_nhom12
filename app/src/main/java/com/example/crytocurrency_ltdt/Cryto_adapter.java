@@ -122,14 +122,12 @@ public class Cryto_adapter extends RecyclerView.Adapter<Cryto_adapter.ViewHolder
                 }
                 if (!preconfig.read(context).contains(cryto.getUuid())) {
                     holder.imageView.setImageResource(R.drawable.ic_baseline_remove_circle_24);
-                    Toast.makeText(context,   cryto.getName()+ "", Toast.LENGTH_SHORT).show(); /*cryto.getUuid()*/
                     ArrayList<String> uuid = new ArrayList<>();
                     uuid.addAll(preconfig.read(context));
                     uuid.add(cryto.getUuid());
                     preconfig.write(context, uuid);
                     preconfig.read(context);
                 } else {
-                    Toast.makeText(context, cryto.getName()  + "", Toast.LENGTH_SHORT).show();
                     holder.imageView.setImageResource(R.drawable.ic_baseline_add_circle_24);
                     preconfig.remove(context,cryto.getUuid());
 

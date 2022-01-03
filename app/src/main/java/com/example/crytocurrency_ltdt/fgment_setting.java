@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -163,7 +164,7 @@ public class fgment_setting extends PreferenceFragmentCompat {
         });
 
 
-       /* ListPreference Dark_mode = (ListPreference) findPreference("dark_mode");
+        ListPreference Dark_mode = (ListPreference) findPreference("dark_mode");
         Dark_mode.setOnPreferenceChangeListener((preference, newValue) -> {
             dark_mode =  String.valueOf(newValue);
             //activitive_screen_main.setlocal(language);
@@ -189,7 +190,7 @@ public class fgment_setting extends PreferenceFragmentCompat {
             }
             getActivity().recreate();
             return true;
-        });*/
+        });
 
             /*if (language.contains("VN")) {
                 Toast.makeText(getContext(), R.string.Vietnamese, Toast.LENGTH_SHORT).show();

@@ -26,6 +26,15 @@
             android:title="@string/st_language"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
+
+    <ListPreference
+        android:icon="@drawable/ic_dark_light"
+        android:key="dark_mode"
+        android:title="@string/st_options_darkmode"
+        app:useSimpleSummaryProvider="true"
+        android:defaultValue="MODE_NIGHT_FOLLOW_SYSTEM"
+        android:entries="@array/dark_mode"
+        android:entryValues="@array/dark_mode_values"/>
     <!--<PreferenceCategory
         android:icon="@drawable/ic_baseline_circle_notifications_24"
         android:textColor="#00796B"
