@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        android:theme="@style/Theme.CrytoCurrency_ltdt">
+        <!--New :android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">-->
+        <!--android:icon="@drawable/group_1"-->
         <activity
             android:name=".button_openintroduction"
             android:exported="false" />
@@ -25,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--Theme.AppCompat.DayNight.NoActionBar-->
         <activity
             android:name=".detail"
             android:configChanges="uiMode"
@@ -35,14 +40,17 @@
             android:exported="false" />
         <activity
             android:name=".activitive_screen_main"
-            android:configChanges="locale|orientation|uiMode"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/PreferenceTheme2"/>
+            <!--android:theme="@style/PreferenceTheme2"-->
+            <!--android:configChanges="locale|orientation|uiMode"-->
         <activity
             android:name=".MainActivity"
             android:configChanges="locale|orientation|uiMode"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <receiver android:name=".News_notification"/>
     </application>
 
 </manifest>

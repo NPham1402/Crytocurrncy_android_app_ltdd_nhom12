@@ -1,7 +1,6 @@
 package com.example.crytocurrency_ltdt;
 
 
-
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
@@ -12,6 +11,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +25,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.IMarker;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.DataSet;
@@ -51,7 +52,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-
 
 public class detail extends AppCompatActivity implements OnChartValueSelectedListener  {
     DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
@@ -105,17 +105,21 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
         String minute = String.valueOf(dt.getMinuteOfHour());
         String hours =   String.valueOf(dt.getHourOfDay());
         String day=   String.valueOf(dt.getDayOfWeek());
+        String day1=   String.valueOf(dt.getDayOfMonth());
         String week=   String.valueOf(dt.getWeekOfWeekyear());
         String month=   String.valueOf(dt.getMonthOfYear());
         String year=   String.valueOf(dt.getYear());
         if(seekBar.getProgress() == 0)
             return new String(hours +":" + minute) ;
-        else if (seekBar.getProgress() == 1)
-            return day + "week" +week;
+        else if (seekBar.getProgress() == 1) {
+            if (Integer.parseInt(day) < 7)
+                return hours +":" + minute+ "thứ" + day + 1 + "tuần" + week;
+            else return hours +":" + minute+ "chủ nhật"  + "tuần" + week;
+        }
         else if (seekBar.getProgress() == 2)
-            return week +"month" +month;
+            return hours +":" + minute+"ngày" +day1+ "tuần" +week +"tháng" +month;
         else
-            return month+"year" +year;
+            return "ngày" +day1+"tháng" +month+"năm" +year;
     }
     public int EpochToTest(float i) {
   long fbt = (long) i;
@@ -160,9 +164,18 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
 
         df.setMaximumFractionDigits(340);
         mChart =  findViewById(R.id.linechart);
+        mChart.setDragEnabled(true);
+        mChart.setScaleEnabled(true);
+        mChart.setPinchZoom(true);
+        mChart.setTouchEnabled(true);
+       /* CustomMarkerView mv = new CustomMarkerView (context, R.layout.tvcontent);*/
+        mChart.setDrawMarkers(true);
         seekBar =  findViewById(R.id.sb_chart);
         seekBar.setMax(3);       /*<-- mức của seekbar*/
         seekBar.setProgress(0); /*<-- giá trị của seekbar*/
+        IMarker mv = new CustomMarkerView(context, R.layout.tvcontent,seekBar.getProgress());
+        mChart.setMarkerView(mv);
+        mChart.setMarker(mv);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progress = 0;
 
@@ -172,21 +185,30 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 progress = progressValue;
                 mChart.clear();
                 Log.i("progress :", String.valueOf(progress));
-                if(progress == 0)
+                if(progress == 0) {
                     date = "24h";
-                else if (progress == 1)
+                    mChart.getDescription().setText("trong ngày");
+                }
+                else if (progress == 1) {
                     date = "7d";
-                else if (progress == 2)
+                    mChart.getDescription().setText("trong tuần");
+                }
+                else if (progress == 2) {
                     date = "3m";
-                else if (progress == 3)
+                    mChart.getDescription().setText("trong 3 tháng");
+                }
+                else if (progress == 3) {
                     date = "1y";
+                    /*mChart.getDescription().setText("trong năm"+String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));*/
+                    mChart.getDescription().setText("trong vòng 1 năm");
+                }
                 getcrypto_history(uuid, date, new VolleyCallBack() {
                     @Override
                     public void onSuccess() {
-
+                        mChart.setDrawMarkers(true);
+                        IMarker mv = new CustomMarkerView(context, R.layout.tvcontent,seekBar.getProgress());
+                        mChart.setMarker(mv);
                         /*List <String> timestamp =new ArrayList<>();*/
-                        mChart.setDragEnabled(true);
-                        mChart.setScaleEnabled(false);
                         Float [] timestamp = new Float[sparkline.size()];
                         Float [] price = new Float[sparkline.size()];
                         for (int i = 0; i < sparkline.size(); i++){
@@ -200,17 +222,19 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                         int Moh , trung;
                         trung = 0;
                         Moh = EpochToTest(Float.parseFloat(df.format(timestamp[0])));
-                        for (int i = 0; i <100; i++) {
+                        /*Log.e("sparklinesize ",String.valueOf(sparkline.size()) );*/
+                        for (int i = 0; i < sparkline.size(); i++) {
+                            dataVal1.add(new Entry(timestamp[i], price[i]));
                             int min  = EpochToTest(Float.parseFloat(df.format(timestamp[i])));
-                            if( ( Moh == EpochToTest(Float.parseFloat(df.format(timestamp[0])))  || min != Moh ) && min > trung ) {
+                            /*if( ( Moh == EpochToTest(Float.parseFloat(df.format(timestamp[0])))  || min != Moh ) && min > trung ) {
                                 dataVal1.add(new Entry(timestamp[i], price[i]));
-                        /*Log.e("timestamp ", (timestamp[i].toString()));
+                        *//*Log.e("timestamp ", (timestamp[i].toString()));
                         Log.e("timestamp format ", (df.format(timestamp[i])));
-                        Log.e("date ", (EpochToDate(Float.parseFloat(df.format(timestamp[i])))) + "");*/
+                        Log.e("date ", (EpochToDate(Float.parseFloat(df.format(timestamp[i])))) + "");*//*
                                 xLabel.add((EpochToTime(Float.parseFloat(df.format(timestamp[i])))));
                                 Moh = min;
                                 trung = min;
-                            }
+                            }*/
                         }
                         LineDataSet linedataset1 = new LineDataSet( dataVal1,getResources().getString(R.string.PriceChart));
                         ArrayList<ILineDataSet> DataSets = new ArrayList<>();
@@ -224,9 +248,11 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                         mChart.invalidate();
                         XAxis xAxis =  mChart.getXAxis();
                         xAxis.setDrawGridLinesBehindData(true);
+                        xAxis.setGranularity(1f);
+                        xAxis.setCenterAxisLabels(false);
                         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
                         xAxis.setValueFormatter(new MyXValue(xLabel) );
-                        xAxis.setTextSize(2f);
+                        xAxis.setTextSize(1f);
 
 
 
@@ -263,7 +289,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
         description=findViewById(R.id.detail_description);
         rank=findViewById(R.id.detail_rank);
         price=findViewById(R.id.detail_price);
-        icon=(ImageView) findViewById(R.id.imageView2);
+        icon=findViewById(R.id.imageView2);
         uuid= savedInstanceState.getString("uuid");
         RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -279,8 +305,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 leftAxis.setDrawGridLines(true);
                 leftAxis.setAxisMinimum(0.1f);*/
                 /*List <String> timestamp =new ArrayList<>();*/
-                mChart.setDragEnabled(true);
-                mChart.setScaleEnabled(false);
+                mChart.getDescription().setText("trong ngày");
                 Float [] timestamp = new Float[sparkline.size()];
                 Float [] price = new Float[sparkline.size()];
                 for (int i = 0; i < sparkline.size(); i++){
@@ -295,16 +320,17 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 trung = 0;
                 Moh = EpochToTest(Float.parseFloat(df.format(timestamp[0])));
                 for (int i = 0; i < sparkline.size(); i++) {
-                    int min  = EpochToTest(Float.parseFloat(df.format(timestamp[i])));
+                    dataVal1.add(new Entry(timestamp[i], price[i]));
+                    /*int min  = EpochToTest(Float.parseFloat(df.format(timestamp[i])));
                     if( ( Moh == EpochToTest(Float.parseFloat(df.format(timestamp[0])))  || min != Moh ) && min > trung ) {
                         dataVal1.add(new Entry(timestamp[i], price[i]));
-                        /*Log.e("timestamp ", (timestamp[i].toString()));
+                        *//*Log.e("timestamp ", (timestamp[i].toString()));
                         Log.e("timestamp format ", (df.format(timestamp[i])));
-                        Log.e("date ", (EpochToDate(Float.parseFloat(df.format(timestamp[i])))) + "");*/
-                        /*KHÔNG XÀI ------>*/       xLabel.add((EpochToTime(Float.parseFloat(df.format(timestamp[i])))));
+                        Log.e("date ", (EpochToDate(Float.parseFloat(df.format(timestamp[i])))) + "");*//*
+                        *//*KHÔNG XÀI ------>*//*       xLabel.add((EpochToTime(Float.parseFloat(df.format(timestamp[i])))));
                         Moh = min;
                         trung = min;
-                    }
+                    }*/
                 }
                 LineDataSet linedataset1 = new LineDataSet( dataVal1,getResources().getString(R.string.PriceChart));
                 ArrayList<ILineDataSet> DataSets = new ArrayList<>();
@@ -317,10 +343,13 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 mChart.setData(lineDatas);
                 mChart.invalidate();
                 XAxis xAxis =  mChart.getXAxis();
+                xAxis.setDrawLabels(false);
+                xAxis.setCenterAxisLabels(false);
+                xAxis.setGranularity(1f);
                 xAxis.setDrawGridLinesBehindData(true);
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
                 xAxis.setValueFormatter(new MyXValue(xLabel) );
-                xAxis.setTextSize(2f);
+                xAxis.setTextSize(1f);
 
 
 
@@ -377,7 +406,6 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                 rank.setText(ranking);
                 GlideToVectorYou.justLoadImage(detail.this, myUri, icon);
             }
-
         });
         /*Glide.with(this).load(url2).into(icon);*/
 
@@ -421,7 +449,12 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
     }
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
+        Toast.makeText(this, "Value: "
+                + e.getY()
+                + ", index: "
+                + h.getX()
+                + ", DataSet index: "
+                + h.getDataSetIndex(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -434,7 +467,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
     }
     public void getcrypto_history(String uuid,String date,final VolleyCallBack callBack){
         String url = "https://api.coinranking.com/v2/coin/"+uuid+"/history?timePeriod="+date;
-        Log.e("nguyen",url);
+        /*Log.e("nguyen",url);*/
         sparkline.clear();
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectReques= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -450,15 +483,19 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                         /*Integer*/ Float timrstamp= Float.parseFloat(price_history.getString("timestamp"));
                         sparkline.add(new pricehitory(price,timrstamp));
 
-                    }
+                        }
                     callBack.onSuccess();
 
                 } catch (JSONException e) {
+                    Log.e("volley",e+"");
+                    Toast.makeText(getBaseContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.e("volley",error+"");
+                Toast.makeText(getBaseContext(),error.toString()+" ",Toast.LENGTH_SHORT).show();
 
             }
         }){
@@ -491,14 +528,18 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                     price_item=dataobject.getString("price");
                     ranking=dataobject.getString("rank");
 
-                    callBack.onSuccess();
+                        callBack.onSuccess();
 
                 } catch (JSONException e) {
+                    Log.e("volley",e+"");
+                    Toast.makeText(getBaseContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.e("volley",error+"");
+                Toast.makeText(getBaseContext(),error.toString()+" ",Toast.LENGTH_SHORT).show();
 
             }
         }){
@@ -539,4 +580,3 @@ class pricehitory{
         this.timestamp = timestamp;
     }
 }
-

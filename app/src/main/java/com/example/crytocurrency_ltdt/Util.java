@@ -164,6 +164,7 @@ public class Util {
     public ArrayList<News> getnews(){
         newsArrayList.clear();
       //  getnews_api();
+        /*Toast.makeText(context,""+newsArrayList.size(), Toast.LENGTH_SHORT).show();*/
         return newsArrayList;
     }
 
@@ -188,11 +189,13 @@ public class Util {
                     news_adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(context, ""+e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context , R.string.cannot_retrieve_data, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -218,7 +221,16 @@ public static class searc{
 
     String uuid;
     Boolean status;
-        String name;
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    String name;
 
     public searc(String uuid, String name,Boolean status) {
         this.uuid = uuid;

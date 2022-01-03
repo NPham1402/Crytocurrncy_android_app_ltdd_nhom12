@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".detail"
     android:background="@color/white">
+    <!--android:background="@color/xam">-->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,6 +17,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:titleTextColor="@color/vang" />
+    <!--android:background="@color/xanhdam"-->
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -34,12 +36,12 @@
                 android:text="TimeL"
                 android:textColor="@color/vang"/>
                 <SeekBar
-                android:id="@+id/sb_chart"
-                style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:max="4"
-                android:progress="3" />
+                    android:id="@+id/sb_chart"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="3"
+                    android:progress="0" />
             </LinearLayout>
 
             <Space
@@ -139,6 +141,7 @@
                 android:ellipsize="end"
                 android:textSize="18dp"
                 android:textColor="@color/black"/>
+            <!--android:textColor="@color/white"/>-->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"/>

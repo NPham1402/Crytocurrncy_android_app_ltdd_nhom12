@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="PriceChart">PriceChart</string>
     <string name="app_name">CrytoCurrency_ltdt</string>
     <string name="news_tab_layout">News</string>
     <string name="cryto_tab_layout">Crytocurrency</string>
     <string name="setting_tab_layout">Settings</string>
     <string name="st_text_category">Text</string>
     <string name="st_textsize">Text size</string>
-    <string name="OldPrice_error">No data on Old price</string>
-    <string name="LastPrice_error">No data on Newest price</string>
     <string name="st_language">Language</string>
-    <string name="PriceChart">PriceChart</string>
     <string name="main_activity_loading">Loading</string>
     <string name="st_options_categore">Option</string>
     <string name="st_notification_category">Notice</string>
@@ -38,8 +36,15 @@
     <string name="dark_mode_system">System Default</string>
     <string name="dark_mode_time">Day time</string>
     <string name="dark_mode_pin">Battery saved</string>
-    <string name="sortpricetang">Prices: Lowest first</string>
-    <string name="sortpricegiam">Prices: Highest first</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_price">price</string>
+    <string name="sort_percent">growth rate</string>
+    <string name="app_name_title" translatable="false">.</string>
+    <string name="sort_as">Sort_as: ...</string>
+    <string name="sortpricetang">Prices go up</string>
+    <string name="sortpricegiam">Prices go down</string>
+    <string name="OldPrice_error">No data on Old price</string>
+    <string name="LastPrice_error">No data on Newest price</string>
     <string name="introduction_app_start">App Introduction</string>
     <string name="introduction_app_start2">Start</string>
 </resources>

@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,10 +63,12 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         String lang_code= sharedPreferences.getString("Language", "vi");//load it from SharedPref
         float f = Float.parseFloat(sharedPreferences.getString("textsize", "1.0f"));
         Context context = Util.changeLang(getActivity().getBaseContext(), lang_code ,f );
+
         SharedPreferences sharedPreferences1 = context.getSharedPreferences("sniper", Context.MODE_PRIVATE);
         recyclerView =view.findViewById(R.id.crypto_all);
         crytoArrayList =new ArrayList<>();
         int a=sharedPreferences1.getInt("snipervalues",2);
+        /*Toast.makeText(getContext(),""+a,Toast.LENGTH_SHORT).show();*/
         swipe =view.findViewById(R.id.sf_refresh_layout1);
         swipe.setOnRefreshListener(this);
         LinearLayoutManager llm =new LinearLayoutManager(getContext());
@@ -133,7 +134,7 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                         try {
                             if (preconfig.read(getContext()).contains(uuid)){
                                 status=true;
-                                Log.e(uuid,name);
+                                /*Log.e(uuid,name);*/
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -159,11 +160,13 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                     }
                     adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
+                    Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),error.toString()+" ",Toast.LENGTH_SHORT).show();
 
             }
         }){

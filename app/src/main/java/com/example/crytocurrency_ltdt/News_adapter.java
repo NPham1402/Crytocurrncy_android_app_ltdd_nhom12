@@ -38,6 +38,7 @@ public class News_adapter extends RecyclerView.Adapter<News_adapter.ViewHolder> 
             sysmbol=item_view.findViewById(R.id.tv_sysbol_currency);
             descrition=item_view.findViewById(R.id.news_subtitle);
             linearLayout=item_view.findViewById(R.id.newsContainer);
+
         }
     }
 

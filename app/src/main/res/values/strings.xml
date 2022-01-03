@@ -12,6 +12,23 @@
     <string name="co_chu_small">Nhỏ</string>
     <string name="co_chu_normal">Bình thường</string>
     <string name="co_chu_big">lớn</string>
+
+    <string name="sort_as">sắp xếp theo</string>
+    <string name="sort_name">Theo Tên</string>
+    <string name="sort_price">Theo giá</string>
+    <string name="sort_percent">theo % tăng trưởng</string>
+
+    <string name="OldPrice_error">không có dữ liệu giá cũ</string>
+    <string name="LastPrice_error">không có dữ liệu giá mới</string>
+    <string name="PriceChart">Biểu đồ biến động giá</string>
+
+    <!--<string-array name="sort">
+        <item>@string/sort_name </item>
+        <item>@string/sort_price</item>
+        <item>@string/sort_percent</item>
+        &lt;!&ndash;<item>@string/sort_as</item>&ndash;&gt;
+    </string-array>-->
+
     <string-array name="co_chu">
         <item>@string/co_chu_small </item>
         <item>@string/co_chu_normal</item>
@@ -24,9 +41,6 @@
         <item>1.0f</item>
         <item>1.8f</item>
     </string-array>
-    <string name="OldPrice_error">không có dữ liệu giá cũ</string>
-    <string name="LastPrice_error">không có dữ liệu giá mới</string>
-    <string name="PriceChart">Biểu đồ biến động giá</string>
 
     <string-array name="SBENDGSD">
         <item>@string/dark_mod_valuese_dark</item>
@@ -105,7 +119,7 @@
     <string name="st_options_time_update_price">Thời gian cập nhật giá (Phút)</string>
     <string name="add">Thêm vào yêu thích</string>
     <string-array name="time_notice_values">
-        <item><string name="time_notice_values">5</string></item>
+        <item>5</item>
         <item>10</item>
         <item>15</item>
         <item>20</item>

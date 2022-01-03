@@ -43,7 +43,8 @@
             android:text="ĐA DẠNG LỰA CHỌN"
             android:textColor="@color/white"
             android:textSize="35dp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            tools:visibility="visible" />
 
 
     </FrameLayout>
@@ -53,6 +54,7 @@
         layout="@layout/activity_button_introduction"
         android:layout_width="274dp"
         android:layout_height="69dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        tools:visibility="visible" />
 
 </LinearLayout>

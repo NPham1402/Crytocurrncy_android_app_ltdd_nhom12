@@ -47,7 +47,6 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_fgment_news, container, false);
-
         return view;
     }
 
