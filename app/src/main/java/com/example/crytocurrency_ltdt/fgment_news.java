@@ -95,13 +95,11 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
                     news_adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(getContext(), ""+e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext() , R.string.cannot_retrieve_data, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -151,7 +149,6 @@ public class fgment_news extends Fragment implements SwipeRefreshLayout.OnRefres
 
     @Override
     public void onRefresh() {
-        Toast.makeText(getContext(), R.string.Refresh, Toast.LENGTH_SHORT).show();
         newsArrayList.clear();
         new Handler().postDelayed(new Runnable() {
             @Override

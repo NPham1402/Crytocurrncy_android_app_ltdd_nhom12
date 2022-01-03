@@ -59,13 +59,11 @@ public class News_notification extends BroadcastReceiver {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(context, ""+e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context , R.string.cannot_retrieve_data, Toast.LENGTH_SHORT).show();
 
             }
         });

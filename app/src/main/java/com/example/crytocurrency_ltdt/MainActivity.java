@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         Util.adjustFontSize(this ,f);
         setContentView(R.layout.activity_main);
         String language = sharedPreferences.getString("Language", "Vi");
-        Toast.makeText(MainActivity.this, language, Toast.LENGTH_SHORT).show();
 
         if(Localehelper.getLanguage(MainActivity.this).equalsIgnoreCase("EN"))
         {

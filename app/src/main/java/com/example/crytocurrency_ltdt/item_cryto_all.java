@@ -68,7 +68,6 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
         recyclerView =view.findViewById(R.id.crypto_all);
         crytoArrayList =new ArrayList<>();
         int a=sharedPreferences1.getInt("snipervalues",2);
-        Toast.makeText(getContext(),""+a,Toast.LENGTH_SHORT).show();
         swipe =view.findViewById(R.id.sf_refresh_layout1);
         swipe.setOnRefreshListener(this);
         LinearLayoutManager llm =new LinearLayoutManager(getContext());
@@ -160,13 +159,11 @@ public class item_cryto_all extends Fragment implements SwipeRefreshLayout.OnRef
                     }
                     adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
-                    Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(),error.toString()+" ",Toast.LENGTH_SHORT).show();
 
             }
         }){

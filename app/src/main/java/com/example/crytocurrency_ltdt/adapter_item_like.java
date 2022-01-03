@@ -112,7 +112,6 @@ public class adapter_item_like extends BaseAdapter  implements SwipeRefreshLayou
                 @Override
                 public void onClick(View v)  {
                     preconfig.remove(context, cryto.getUuid());
-                    Toast.makeText(context, cryto.getSymbol(), Toast.LENGTH_SHORT).show();
                     notifyDataSetChanged();
                     onRefresh();
 

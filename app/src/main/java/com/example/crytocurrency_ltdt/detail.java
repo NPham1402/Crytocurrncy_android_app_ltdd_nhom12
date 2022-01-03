@@ -12,7 +12,6 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -201,7 +200,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                         int Moh , trung;
                         trung = 0;
                         Moh = EpochToTest(Float.parseFloat(df.format(timestamp[0])));
-                        for (int i = 0; i < 100; i++) {
+                        for (int i = 0; i <100; i++) {
                             int min  = EpochToTest(Float.parseFloat(df.format(timestamp[i])));
                             if( ( Moh == EpochToTest(Float.parseFloat(df.format(timestamp[0])))  || min != Moh ) && min > trung ) {
                                 dataVal1.add(new Entry(timestamp[i], price[i]));
@@ -422,12 +421,7 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
     }
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        Toast.makeText(this, "Value: "
-                + e.getY()
-                + ", index: "
-                + h.getX()
-                + ", DataSet index: "
-                + h.getDataSetIndex(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -460,13 +454,11 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                     callBack.onSuccess();
 
                 } catch (JSONException e) {
-                    Toast.makeText(getBaseContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getBaseContext(),error.toString()+" ",Toast.LENGTH_SHORT).show();
 
             }
         }){
@@ -502,13 +494,11 @@ public class detail extends AppCompatActivity implements OnChartValueSelectedLis
                     callBack.onSuccess();
 
                 } catch (JSONException e) {
-                    Toast.makeText(getBaseContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getBaseContext(),error.toString()+" ",Toast.LENGTH_SHORT).show();
 
             }
         }){

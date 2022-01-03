@@ -141,13 +141,11 @@ public class search extends AppCompatActivity {
                     callBack.onSuccess();
 
                 } catch (JSONException e) {
-                    Toast.makeText(getBaseContext(),e.toString(),Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getBaseContext(),error.toString()+" ",Toast.LENGTH_SHORT).show();
 
             }
         }){

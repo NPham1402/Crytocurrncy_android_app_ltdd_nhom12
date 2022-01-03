@@ -48,23 +48,18 @@ public class activitive_screen_main extends AppCompatActivity {
         List<Fragment> fragmentList = new ArrayList<>();
         String dark_mode = sharedPreferences.getString("dark_mode", "MODE_NIGHT_FOLLOW_SYSTEM");
         if (dark_mode.contains("MODE_NIGHT_NO")) {
-            Toast.makeText(this, R.string.dark_mode_light, Toast.LENGTH_SHORT).show();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
         else if (dark_mode.contains("MODE_NIGHT_YES")) {
-            Toast.makeText(this, R.string.dark_mode_dark, Toast.LENGTH_SHORT).show();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
         else if (dark_mode.contains("MODE_NIGHT_FOLLOW_SYSTEM")) {
-            Toast.makeText(this, R.string.dark_mode_system, Toast.LENGTH_SHORT).show();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         }
         else if (dark_mode.contains("MODE_NIGHT_AUTO_TIME")) {
-            Toast.makeText(this, R.string.dark_mode_time, Toast.LENGTH_SHORT).show();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_TIME);
         }
         else if (dark_mode.contains("MODE_NIGHT_AUTO_BATTERY")) {
-            Toast.makeText(this, R.string.dark_mode_pin, Toast.LENGTH_SHORT).show();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
         }
 

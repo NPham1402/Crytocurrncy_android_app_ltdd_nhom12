@@ -128,13 +128,11 @@ public class Item_cryto_like extends Fragment implements adapter_item_like.MyInt
                         }
                         adapter.notifyDataSetChanged();
                     } catch (JSONException e) {
-                        Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getContext(), error.toString() + " ", Toast.LENGTH_SHORT).show();
 
                 }
             }) {
