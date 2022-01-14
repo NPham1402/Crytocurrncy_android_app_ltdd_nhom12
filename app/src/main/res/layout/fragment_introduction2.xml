@@ -13,12 +13,14 @@
         android:layout_height="300dp"
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
+        android:background="@android:color/transparent"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/news_intro2" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:background="@android:color/transparent"
         android:layout_gravity="top"
         android:layout_marginTop="60dp">
 
@@ -26,23 +28,26 @@
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/rocket_intro2"/>
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
+            android:background="@android:color/transparent"
             android:gravity="center"
             android:shadowColor="@color/vang"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="10"
-            android:text="CẬP NHẬT TIN TỨC NHANH CHÓNG"
-            android:textColor="@color/white"
+            android:text="@string/c_p_nh_t_tin_t_c_nhanh_ch_ng"
+            android:textColor="#D32F2F"
             android:textSize="35dp"
             android:textStyle="normal" />
     </FrameLayout>

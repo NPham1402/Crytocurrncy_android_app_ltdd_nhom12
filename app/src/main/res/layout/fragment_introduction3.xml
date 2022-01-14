@@ -8,6 +8,7 @@
     tools:context=".introduction3"
     android:background="@drawable/intro3">
     <com.airbnb.lottie.LottieAnimationView
+        android:background="@android:color/transparent"
         android:layout_width="400dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
@@ -18,29 +19,34 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:background="@android:color/transparent"
         android:layout_gravity="top"
         android:layout_marginTop="60dp">
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/business_intro3"/>
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:layout_gravity="right"
             android:gravity="center"
             android:shadowColor="@color/vientim"
             android:shadowDx="5"
+            android:background="@android:color/transparent"
+
             android:shadowDy="5"
             android:shadowRadius="10"
             android:text="MUA BÁN ĐƠN GIẢN, BẢO MẬT"
-            android:textColor="@color/white"
+            android:textColor="#D32F2F"
             android:textSize="40dp"
             android:textStyle="normal" />
     </FrameLayout>

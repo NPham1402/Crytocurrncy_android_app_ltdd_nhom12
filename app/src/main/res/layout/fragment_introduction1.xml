@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/etf_chart" />
@@ -19,12 +20,15 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="320dp"
+        android:background="@android:color/transparent"
         android:layout_gravity="top"
         android:layout_marginTop="60dp">
+
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:background="@android:color/transparent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/currency" />
@@ -33,16 +37,17 @@
             android:id="@+id/textView2"
             android:layout_width="242dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:text="BIỂU ĐỒ TRỰC QUAN"
-            android:textSize="40dp"
             android:layout_gravity="center"
-            android:textStyle="normal"
-            android:textColor="@color/white"
+            android:layout_marginEnd="40dp"
             android:shadowColor="@color/vienxanh"
             android:shadowDx="5"
+            android:background="@android:color/transparent"
             android:shadowDy="5"
-            android:shadowRadius="10"/>
+            android:shadowRadius="10"
+            android:text="@string/bi_u_tr_c_quan"
+            android:textColor="#D32F2F"
+            android:textSize="40dp"
+            android:textStyle="normal" />
     </FrameLayout>
 
 </LinearLayout>

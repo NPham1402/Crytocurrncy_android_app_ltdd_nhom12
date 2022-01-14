@@ -127,4 +127,6 @@
         <item>30</item>
     </string-array>
     <string name="main_activity_loading">Đang tải</string>
+    <string name="c_p_nh_t_tin_t_c_nhanh_ch_ng">CẬP NHẬT TIN TỨC NHANH CHÓNG</string>
+    <string name="bi_u_tr_c_quan">BIỂU ĐỒ TRỰC QUAN</string>
 </resources>

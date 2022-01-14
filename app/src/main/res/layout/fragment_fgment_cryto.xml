@@ -43,7 +43,7 @@
                 app:layout_collapseMode="pin"
                 app:menu="@menu/menu_cryyo"
                 app:title="@string/app_name"
-                app:titleTextColor="@color/vang"/>
+                app:titleTextColor="@color/vang" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <LinearLayout

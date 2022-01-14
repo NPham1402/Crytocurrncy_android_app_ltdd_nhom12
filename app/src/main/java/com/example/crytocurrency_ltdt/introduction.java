@@ -45,17 +45,17 @@ public class introduction extends AppCompatActivity {
                 viewpager2.setCurrentItem(3);
             }
         });
-      callbacks.run();
+//      callbacks.run();
       viewpager2.setCurrentItem(0);
     }
-    private Runnable callbacks = new Runnable() {
-        @Override
-        public void run() {
-            if (viewpager2.getCurrentItem()<=3){
-                viewpager2.setCurrentItem(viewpager2.getCurrentItem() + 1,true);
-            }
-            mhandler.postDelayed(this,6000);
-
-        }
-    };
+//    private Runnable callbacks = new Runnable() {
+//        @Override
+//        public void run() {
+//            if (viewpager2.getCurrentItem()<=3){
+//                viewpager2.setCurrentItem(viewpager2.getCurrentItem() + 1,true);
+//            }
+//            mhandler.postDelayed(this,6000);
+//
+//        }
+//    };
 }

@@ -8,6 +8,7 @@
     tools:context=".introduction4"
     android:background="@drawable/intro4">
     <com.airbnb.lottie.LottieAnimationView
+        android:background="@android:color/transparent"
         android:layout_width="400dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
@@ -17,6 +18,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:background="@android:color/transparent"
         android:layout_height="300dp"
         android:layout_gravity="top"
         android:layout_marginTop="50dp">
@@ -24,6 +26,7 @@
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="350dp"
             android:layout_height="350dp"
+            android:background="@android:color/transparent"
             android:layout_gravity="center"
             android:paddingBottom="30dp"
             app:lottie_autoPlay="true"
@@ -40,8 +43,9 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="10"
+            android:background="@android:color/transparent"
             android:text="ĐA DẠNG LỰA CHỌN"
-            android:textColor="@color/white"
+            android:textColor="#D32F2F"
             android:textSize="35dp"
             android:textStyle="normal"
             tools:visibility="visible" />
@@ -53,6 +57,7 @@
         android:id="@+id/lo_login"
         layout="@layout/activity_button_introduction"
         android:layout_width="274dp"
+        android:background="@android:color/transparent"
         android:layout_height="69dp"
         android:layout_gravity="center"
         tools:visibility="visible" />
